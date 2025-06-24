@@ -1,10 +1,10 @@
 === WPFrank Companion ===
 Contributors: FARAZFRANK
 Tags: frontpage, theme page, featured, widgets, admin, companion, homepage, WordPress frontpage, template, theme builder, page builder
-Requires at least: 4.0
-Tested up to: 6.3
-Stable tag: 0.3.0
+Tested up to: 6.8
+Stable tag: 0.3.1
 Requires PHP: 4.0
+Requires at least: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -63,6 +63,9 @@ Source: https://pxhere.com/
 Have any queries?
 
 == Changelog ==
+= 3.1 =
+* WordPress plugin tested up to 6.8.
+
 = 3.0 =
 * Meme token child theme data added.
 

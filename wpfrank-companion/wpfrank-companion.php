@@ -5,10 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 * Plugin Name:	WPFrank Companion
 * Plugin URI:	https://wordpress.org/plugins/wpfrank-companion
 * Description:	WPFrank Companion plugin provides themes extra settings for front page.
-* Version:		0.3.0
+* Version:		0.3.1
 * Author: 		WP Frank
 * Author URI:	https://wpfrank.com/
-* Tested up to:	6.3.1
+* Tested up to:	6.8
 * Requires:		4.0 or higher
 * License:		GPLv3 or later
 * License URI:	http://www.gnu.org/licenses/gpl-3.0.html
