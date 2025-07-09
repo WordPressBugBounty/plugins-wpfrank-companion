@@ -1,0 +1,46 @@
+a:4:{
+s:8:"template";s:21:"leather-house-premium";
+s:4:"mods";a:30:{
+    i:0;b:0;
+    s:18:"nav_menu_locations";a:1:{s:12:"primary_menu";i:2;}
+    s:18:"custom_css_post_id";i:8;
+    s:21:"leatherhouse_hero_img";s:91:"http://wpfrank.com/demo/modern-house-pro/wp-content/uploads/sites/55/2025/06/mh-slider.webp";
+    s:28:"leatherhouse_hero_area_title";s:27:"Timeless Design, Urban Feel";
+    s:27:"leatherhouse_hero_area_desc";s:72:"Discover a curated home theme built for elegance, space, and simplicity.";
+    s:32:"leatherhouse_hero_area_btn_title";s:15:"Start Exploring";
+    s:29:"leatherhouse_about_area_title";s:43:"Experience the Beauty of Modern Home Design";
+    s:27:"leatherhouse_about_area_des";s:148:"Our handpicked selection of modern homes blends sleek design with functional luxury. Elevate your lifestyle with spaces built to impress and endure.";
+    s:31:"leatherhouse_about_button_title";s:16:"View all designs";
+    s:28:"leatherhouse_about_img_prime";s:92:"http://wpfrank.com/demo/modern-house-pro/wp-content/uploads/sites/55/2025/06/mh-about-1.webp";
+    s:29:"leatherhouse_about_img_second";s:92:"http://wpfrank.com/demo/modern-house-pro/wp-content/uploads/sites/55/2025/06/mh-about-2.webp";
+    s:32:"leatherhouse_topbar_social_icons";s:1093:"[{"icon_value":"fa-facebook","number":"undefined","text":"undefined","link":"#","text2":"undefined","title":"undefined","subtitle":"undefined","subtitle2":"undefined","subtitle3":"undefined","subtitle4":"undefined","subtitle5":"undefined","slide_align":"undefined","social_repeater":"undefined","id":"customizer_repeater_header_social_001","shortcode":"undefined"},{"icon_value":"fa-instagram","number":"undefined","text":"undefined","link":"#","text2":"undefined","title":"undefined","subtitle":"undefined","subtitle2":"undefined","subtitle3":"undefined","subtitle4":"undefined","subtitle5":"undefined","slide_align":"undefined","social_repeater":"undefined","id":"customizer_repeater_header_social_002","shortcode":"undefined"},{"icon_value":"fa-twitter","number":"undefined","text":"undefined","link":"#","text2":"undefined","title":"undefined","subtitle":"undefined","subtitle2":"undefined","subtitle3":"undefined","subtitle4":"undefined","subtitle5":"undefined","slide_align":"undefined","social_repeater":"undefined","id":"customizer_repeater_header_social_003","shortcode":"undefined"}]";
+    s:33:"leatherhouse_hero_overlay_disable";b:0;
+    s:31:"leatherhouse_hero_overlay_color";s:15:"rgba(0,0,0,0.1)";
+    s:11:"custom_logo";i:48;
+    s:29:"leatherhouse_custom_logo_size";a:2:{s:6:"slider";s:3:"180";s:6:"suffix";s:2:"px";}
+    s:31:"leatherhouse_menu_design_layout";s:12:"menu-layout1";
+    s:24:"leatherhouse_menu_btn_sh";b:0;
+    s:28:"leatherhouse_primary_color_1";s:7:"#dd9933";
+    s:28:"leatherhouse_primary_color_2";s:7:"#dd3333";
+    s:37:"leatherhouse_primary_colors_selection";s:14:"gradient-color";
+    s:26:"leatherhouse_menu_btn_icon";s:14:"fa-caret-right";
+    s:26:"leatherhouse_menu_btn_text";s:22:"Build Your Dream House";
+    s:26:"leatherhouse_menu_btn_link";s:1:"#";
+    s:28:"leatherhouse_blog_area_title";s:40:"Insights & Inspiration for Modern Living";
+    s:26:"leatherhouse_blog_area_des";s:138:"Stay informed and inspired with expert articles, design stories, and the latest trends in architecture, interiors, and sustainable living.";
+    s:26:"leatherhouse_blog_disabled";b:1;
+    s:33:"leatherhouse_blog_button_disabled";b:1;
+    s:29:"leatherhouse_blog_button_text";s:15:"Explore Article";
+    s:26:"leatherhouse_footer_bg_img";s:91:"http://wpfrank.com/demo/modern-house-pro/wp-content/uploads/sites/55/2025/06/mh-footer.webp";
+    s:29:"leatherhouse_footer_first_img";s:120:"http://wpfrank.com/demo/modern-house-pro/wp-content/uploads/sites/55/2025/06/ChatGPT-Image-Jun-20-2025-02_56_44-PM-1.png";
+}
+s:7:"options";a:2:{
+    s:9:"site_icon";s:1:"0";
+    s:23:"nav_menus_created_posts";a:0:{}
+    s:14:"show_on_front";s:4:"page";
+    s:13:"page_on_front";i:27;
+}
+s:6:"wp_css";s:41:".theme-content h1 {
+	font-size: 5.4rem;
+}";
+}
