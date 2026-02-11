@@ -1,7 +1,7 @@
 === WPFrank Companion ===
 Contributors: FARAZFRANK
 Tags: frontpage, theme page, featured, widgets, admin, companion, homepage, WordPress frontpage, template, theme builder, page builder
-Tested up to: 6.8
+Tested up to: 6.8.3
 Stable tag: 0.3.2
 Requires PHP: 4.0
 Requires at least: 4.0
