@@ -1,20 +1,22 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
-* Plugin Name:	WPFrank Companion
-* Plugin URI:	https://wordpress.org/plugins/wpfrank-companion
-* Description:	WPFrank Companion plugin provides themes extra settings for front page.
-* Version:		0.3.2
-* Author: 		WP Frank
-* Author URI:	https://wpfrank.com/
-* Tested up to:	6.8
-* Requires:		4.0 or higher
-* License:		GPLv3 or later
-* License URI:	http://www.gnu.org/licenses/gpl-3.0.html
-* Requires PHP:	4.0
-* Text Domain:	wpfrank-companion
-* Domain Path:	/languages
+* Plugin Name:  WPFrank Companion
+* Plugin URI:   https://wordpress.org/plugins/wpfrank-companion
+* Description:  WPFrank Companion plugin provides themes extra settings for front page.
+* Version:      0.3.3
+* Author:       WP Frank
+* Author URI:   https://wpfrank.com/
+* Tested up to: 6.9
+* Requires:     4.0 or higher
+* License:      GPLv3 or later
+* License URI:  http://www.gnu.org/licenses/gpl-3.0.html
+* Requires PHP: 4.0
+* Text Domain:  wpfrank-companion
+* Domain Path:  /languages
 */
 
 /*
@@ -35,17 +37,21 @@ along with WPFrank Companion. If not, see http://www.gnu.org/licenses/gpl-3.0.ht
 define( 'wpfrank_companion_plugin_url', plugin_dir_url( __FILE__ ) );
 define( 'wpfrank_companion_plugin_dir', plugin_dir_path( __FILE__ ) );
 
-if( !function_exists('wpfrank_companion_init') ){
-	function wpfrank_companion_init(){
+if ( ! function_exists( 'wpfrank_companion_init' ) ) {
+	function wpfrank_companion_init() {
 		$activate_theme_data = wp_get_theme(); // getting current theme data
-		$activate_theme = $activate_theme_data->name;
+		$activate_theme      = $activate_theme_data->name;
 
-		if( 'BusinessExpo' == $activate_theme || 'Architect Designs' == $activate_theme || 'Medical Health' == $activate_theme || 'Building Construction' == $activate_theme ){
-			require("inc/businessexpo/businessexpo.php");
+		if ( 'BusinessExpo' == $activate_theme || 'Architect Designs' == $activate_theme || 'Medical Health' == $activate_theme || 'Building Construction' == $activate_theme ) {
+			require 'inc/businessexpo/businessexpo.php';
 		}
 
-		if( 'Crypto AirDrop' == $activate_theme || 'Crypto Compare' == $activate_theme || 'Crypto Mining' == $activate_theme || 'Crypto Token' == $activate_theme || 'Meme Token'== $activate_theme ){
-			require("inc/cryptoairdrop/cryptoairdrop.php");
+		if ( 'Crypto AirDrop' == $activate_theme || 'Crypto Compare' == $activate_theme || 'Crypto Mining' == $activate_theme || 'Crypto Token' == $activate_theme || 'Meme Token' == $activate_theme ) {
+			require 'inc/cryptoairdrop/cryptoairdrop.php';
+		}
+
+		if ( 'Homerix' == $activate_theme ) {
+			require wpfrank_companion_plugin_dir . 'inc/homerix/homerix.php';
 		}
 
 	}
