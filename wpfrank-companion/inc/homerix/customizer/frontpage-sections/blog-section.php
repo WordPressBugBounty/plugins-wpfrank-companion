@@ -31,7 +31,7 @@ function homerix_add_blog_section() {
 			'title'       => esc_html__( 'Blog Section', 'homerix' ),
 			'description' => esc_html__( 'Configure the blog section on your homepage.', 'homerix' ),
 			'panel'       => 'homerix_sections',
-			'priority'    => 70,
+			'priority'    => apply_filters( 'section_priority', 70, 'homerix_blog' ),
 		)
 	);
 }

@@ -2,7 +2,7 @@
 Contributors: FARAZFRANK
 Tags: widgets, homepage, template, theme builder, page builder
 Tested up to: 6.9
-Stable tag: 0.3.3
+Stable tag: 0.3.4
 Requires PHP: 4.0
 Requires at least: 4.0
 License: GPLv3 or later
@@ -33,7 +33,7 @@ Source: https://www.pexels.com
 
 Image for theme Slider 3 image, PxHere
 License: Creative Commons CC0 license.
-License URI: https://pxhere.com/en/photo/945400
+License URI: https://pxhere.com/en/photo/945390
 Source: https://pxhere.com/
 
 == Service ==
@@ -63,6 +63,12 @@ Source: https://pxhere.com/
 Have any queries?
 
 == Changelog ==
+= 0.3.4 =
+* Fixed missing Customizer sections (Hero, Services, Why Us) for Homerix theme.
+* Fixed structural PHP errors in Services section customizer.
+* Fixed broken asset paths and case-sensitivity in Section Order reordering.
+* Improved initialization priority and theme detection for better reliability.
+
 = 0.3.3 =
 * Homerix theme frontpage sections and customizer settings added.
 * Homerix page templates, AJAX handlers, integrations, and default content support added.

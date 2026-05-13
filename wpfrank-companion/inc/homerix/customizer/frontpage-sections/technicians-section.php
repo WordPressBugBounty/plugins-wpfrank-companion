@@ -29,7 +29,7 @@ function homerix_add_technicians_section() {
 			'title'       => esc_html__( 'Technicians Section', 'homerix' ),
 			'description' => esc_html__( 'Configure the featured technicians section on your homepage.', 'homerix' ),
 			'panel'       => 'homerix_sections',
-			'priority'    => 30,
+			'priority'    => apply_filters( 'section_priority', 30, 'homerix_technicians' ),
 		)
 	);
 }

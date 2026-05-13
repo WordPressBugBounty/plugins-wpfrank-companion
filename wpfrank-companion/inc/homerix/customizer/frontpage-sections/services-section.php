@@ -21,6 +21,16 @@ if ( ! class_exists( 'Kirki' ) ) {
  */
 add_action( 'init', 'homerix_services_section_customizer' );
 function homerix_services_section_customizer() {
+	// Add Services Section to the existing homerix_sections panel.
+	Kirki::add_section(
+		'homerix_services',
+		array(
+			'title'       => esc_html__( 'Services Section', 'homerix' ),
+			'description' => esc_html__( 'Configure the services section on your homepage.', 'homerix' ),
+			'panel'       => 'homerix_sections',
+			'priority'    => apply_filters( 'section_priority', 20, 'homerix_services' ),
+		)
+	);
 
 	// Set default values if not already set.
 	if ( ! get_theme_mod( 'services_section_settings' ) ) {
@@ -303,7 +313,6 @@ function homerix_services_section_customizer() {
 			),
 		),
 	);
-}
 
 	// Layout Columns
 	Kirki::add_field(
@@ -653,3 +662,4 @@ function homerix_services_section_customizer() {
 			),
 		)
 	);
+}

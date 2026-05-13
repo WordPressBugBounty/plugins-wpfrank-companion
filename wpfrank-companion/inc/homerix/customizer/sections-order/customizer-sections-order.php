@@ -11,14 +11,14 @@ define( 'SECTIONS_ORDER_VERSION', '1.0.0' );
  * Function to enqueue sections order main script.
  */
 function sections_order_script() {
-	wp_enqueue_script( 'customizer-sections-order-script', get_template_directory_uri() . '/inc/customizer/customizer-sections-order/js/customizer-sections-order.js', array( 'jquery', 'jquery-ui-sortable' ), SECTIONS_ORDER_VERSION, true );
+	wp_enqueue_script( 'customizer-sections-order-script', WPFRANK_HOMERIX_URL . 'customizer/sections-order/js/customizer-sections-order.js', array( 'jquery', 'jquery-ui-sortable' ), SECTIONS_ORDER_VERSION, true );
 	$control_settings = array(
 		'sections_container' => '#accordion-panel-homerix_sections > ul, #sub-accordion-panel-homerix_sections',
 		'blocked_items'      => '#accordion-section-homerix_footer, #accordion-section-homerix_header',
 		'saved_data_input'   => '#customize-control-homerix_sections_order input',
 	);
 	wp_localize_script( 'customizer-sections-order-script', 'control_settings', $control_settings );
-	wp_enqueue_style( 'customizer-sections-order-style', get_template_directory_uri() . '/inc/customizer/customizer-sections-order/css/customizer-sections-order-style.css', array( 'dashicons' ), SECTIONS_ORDER_VERSION );
+	wp_enqueue_style( 'customizer-sections-order-style', WPFRANK_HOMERIX_URL . 'customizer/sections-order/css/customizer-sections-order-style.css', array( 'dashicons' ), SECTIONS_ORDER_VERSION );
 }
 add_action( 'customize_controls_enqueue_scripts', 'sections_order_script' );
 

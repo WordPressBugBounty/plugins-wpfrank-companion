@@ -30,7 +30,7 @@ function homerix_add_cta_section() {
 			'title'       => esc_html__( 'CTA Banner Section', 'homerix' ),
 			'description' => esc_html__( 'Configure the call-to-action banner section on your homepage.', 'homerix' ),
 			'panel'       => 'homerix_sections',
-			'priority'    => 50,
+			'priority'    => apply_filters( 'section_priority', 50, 'homerix_cta' ),
 		)
 	);
 }

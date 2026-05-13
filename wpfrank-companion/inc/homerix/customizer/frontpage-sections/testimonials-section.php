@@ -30,7 +30,7 @@ function homerix_add_testimonials_section() {
 			'title'       => esc_html__( 'Testimonials Section', 'homerix' ),
 			'description' => esc_html__( 'Configure the customer testimonials section on your homepage.', 'homerix' ),
 			'panel'       => 'homerix_sections',
-			'priority'    => 60,
+			'priority'    => apply_filters( 'section_priority', 60, 'homerix_testimonials' ),
 		)
 	);
 }

@@ -21,6 +21,16 @@ if ( ! class_exists( 'Kirki' ) ) {
  */
 add_action( 'init', 'homerix_hero_section_enhanced_init' );
 function homerix_hero_section_enhanced_init() {
+	// Add Hero Section to the existing homerix_sections panel.
+	Kirki::add_section(
+		'homerix_hero',
+		array(
+			'title'       => esc_html__( 'Hero Section', 'homerix' ),
+			'description' => esc_html__( 'Configure the hero section with slider support.', 'homerix' ),
+			'panel'       => 'homerix_sections',
+			'priority'    => apply_filters( 'section_priority', 10, 'homerix_hero' ),
+		)
+	);
 
 	/**
 	 * Hero Slides Configuration

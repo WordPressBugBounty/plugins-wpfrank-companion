@@ -21,6 +21,16 @@ if ( ! class_exists( 'Kirki' ) ) {
  */
 add_action( 'init', 'homerix_whyus_section_customizer' );
 function homerix_whyus_section_customizer() {
+	// Add Why Us Section to the existing homerix_sections panel.
+	Kirki::add_section(
+		'homerix_whyus',
+		array(
+			'title'       => esc_html__( 'Why Choose Us Section', 'homerix' ),
+			'description' => esc_html__( 'Configure the "Why Choose Us" section on your homepage.', 'homerix' ),
+			'panel'       => 'homerix_sections',
+			'priority'    => apply_filters( 'section_priority', 25, 'homerix_whyus' ),
+		)
+	);
 
 	// Set default values if not already set
 	if ( ! get_theme_mod( 'whyus_section_settings' ) ) {

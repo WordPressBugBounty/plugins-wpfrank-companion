@@ -1,5 +1,40 @@
 # WPFrank Companion - Changelog
 
+## [0.3.4] - 2026-05-12 — Customizer Restoration & Reliability Fixes
+
+### Overview
+Fixed critical issues with Customizer visibility, structural PHP errors, and the Section Order drag-and-drop functionality introduced during the theme-to-plugin migration.
+
+### Files Changed
+- `wpfrank-companion.php`
+- `inc/homerix/customizer/frontpage-sections/hero-section.php`
+- `inc/homerix/customizer/frontpage-sections/services-section.php`
+- `inc/homerix/customizer/frontpage-sections/whyus-section.php`
+- `inc/homerix/customizer/frontpage-sections/technicians-section.php`
+- `inc/homerix/customizer/frontpage-sections/testimonials-section.php`
+- `inc/homerix/customizer/frontpage-sections/cta-section.php`
+- `inc/homerix/customizer/frontpage-sections/blog-section.php`
+- `inc/homerix/customizer/sections-order/customizer-sections-order.php`
+- `inc/homerix/customizer/sections-order/js/customizer-sections-order.js`
+- `inc/homerix/customizer/sections-order/css/customizer-sections-order-style.css`
+- `readme.txt`
+
+### Detailed Technical Changes
+
+#### 1. Core Initialization & Detection
+- **`wpfrank-companion.php`**: Adjusted `wpfrank_companion_init` priority from default `10` to `9`. This ensures all theme-specific Customizer files are loaded and their hooks registered *before* the Customizer API reaches its main execution at priority 10, preventing a race condition where settings were being missed.
+- **Theme Detection**: Updated the detection logic to use `get_template()` instead of `wp_get_theme()->name`. This ensures consistent behavior even when using child themes or if the theme name is translated.
+
+#### 2. Customizer Visibility & Structural Fixes
+- **Section Registration**: Restored missing `Kirki::add_section` calls in `hero-section.php`, `services-section.php`, and `whyus-section.php`. Without these explicit registrations, the fields existed but their containers were hidden in the Customizer UI.
+- **PHP Repair**: Fixed a structural error in `services-section.php` where a prematurely placed closing brace was causing Customizer fields to be orphaned outside of the initialization function.
+
+#### 3. Section Order Reordering (Drag & Drop)
+- **Priority Filtering**: Updated all 7 homepage section registration files to use `apply_filters( 'section_priority', <default>, <id> )`. This was the missing link that allowed the "Section Order" settings to actually influence the Customizer UI and frontend rendering.
+- **JS Modernization**: Updated `customizer-sections-order.js` with more robust selectors (targeting `#sub-accordion-panel-homerix_sections`) and improved the handle selector to `.accordion-section-title` for better compatibility with modern WordPress.
+- **CSS Correction**: Resolved case-sensitivity issues in `customizer-sections-order-style.css` (changed `Homerix` to `homerix`) and removed hardcoded references to the `avantex` theme, ensuring drag handles now appear correctly for all sections.
+- **Asset Paths**: Updated `customizer-sections-order.php` to use `WPFRANK_HOMERIX_URL`, fixing 404 errors for internal JS and CSS assets.
+
 ## [0.3.3] - 2026-03-24 — Homerix Theme Compliance Refactoring
 
 ### Overview
