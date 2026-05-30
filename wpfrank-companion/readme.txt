@@ -1,8 +1,8 @@
 === WPFrank Companion ===
 Contributors: FARAZFRANK
 Tags: widgets, homepage, template, theme builder, page builder
-Tested up to: 6.9
-Stable tag: 0.3.4
+Tested up to: 7.0
+Stable tag: 0.3.5
 Requires PHP: 4.0
 Requires at least: 4.0
 License: GPLv3 or later

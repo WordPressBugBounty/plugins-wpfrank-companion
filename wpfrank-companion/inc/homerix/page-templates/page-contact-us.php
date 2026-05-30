@@ -141,13 +141,13 @@ $cta_bg_color  = get_theme_mod( 'contact_cta_bg_color', '#2563EB' );
 						'card_title'       => __( 'Email Us', 'homerix' ),
 						'card_description' => __( "Send us a message and we'll respond within 24 hours.", 'homerix' ),
 						'item1_icon'       => 'fas fa-inbox',
-						'item1_value'      => 'info@Homerixpro.com',
+						'item1_value'      => 'info@example.com',
 						'item1_link_type'  => 'mailto',
 						'item2_icon'       => 'fas fa-headset',
-						'item2_value'      => 'support@Homerixpro.com',
+						'item2_value'      => 'support@example.com',
 						'item2_link_type'  => 'mailto',
 						'item3_icon'       => 'fas fa-briefcase',
-						'item3_value'      => 'careers@Homerixpro.com',
+						'item3_value'      => 'careers@example.com',
 						'item3_link_type'  => 'mailto',
 					),
 					array(
@@ -450,3 +450,4 @@ if ( empty( trim( $form_shortcode ) ) ) {
 </main><!-- #primary -->
 <?php
 get_footer();
+

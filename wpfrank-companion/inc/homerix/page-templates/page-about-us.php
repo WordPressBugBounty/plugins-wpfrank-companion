@@ -176,7 +176,7 @@ $team_members     = get_theme_mod(
 			'position'    => __( 'Founder & CEO', 'homerix' ),
 			'description' => __( 'Master plumber with 25+ years of experience. Michael founded Homerix Pro with a vision to provide honest, reliable home repair services.', 'homerix' ),
 			'linkedin'    => '#',
-			'email'       => 'michael@Homerixpro.com',
+			'email'       => 'michael@example.com',
 		),
 		array(
 			'image'       => get_template_directory_uri() . '/assets/img/customer-2.jpg',
@@ -184,7 +184,7 @@ $team_members     = get_theme_mod(
 			'position'    => __( 'Operations Director', 'homerix' ),
 			'description' => __( 'Sarah ensures every job runs smoothly and every customer receives exceptional service. 15 years in operations management.', 'homerix' ),
 			'linkedin'    => '#',
-			'email'       => 'sarah@Homerixpro.com',
+			'email'       => 'sarah@example.com',
 		),
 		array(
 			'image'       => get_template_directory_uri() . '/assets/img/customer-3.jpg',
@@ -192,7 +192,7 @@ $team_members     = get_theme_mod(
 			'position'    => __( 'Lead Electrician', 'homerix' ),
 			'description' => __( 'Licensed master electrician with expertise in residential and commercial electrical systems. 20 years of experience.', 'homerix' ),
 			'linkedin'    => '#',
-			'email'       => 'david@Homerixpro.com',
+			'email'       => 'david@example.com',
 		),
 		array(
 			'image'       => get_template_directory_uri() . '/assets/img/customer-1.jpg',
@@ -200,7 +200,7 @@ $team_members     = get_theme_mod(
 			'position'    => __( 'Customer Success Manager', 'homerix' ),
 			'description' => __( 'Emily leads our customer service team, ensuring every client has a positive experience from booking to completion.', 'homerix' ),
 			'linkedin'    => '#',
-			'email'       => 'emily@Homerixpro.com',
+			'email'       => 'emily@example.com',
 		),
 	)
 );
@@ -411,3 +411,4 @@ $cta_bg_color  = get_theme_mod( 'about_cta_bg_color', '#2563EB' );
 
 <?php
 get_footer();
+

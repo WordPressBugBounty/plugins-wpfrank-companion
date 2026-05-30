@@ -95,7 +95,7 @@ $faq_items = get_theme_mod(
 		),
 		array(
 			'question' => __( 'How do I contact customer support?', 'homerix' ),
-			'answer'   => __( 'You can contact our customer support team via phone at (555) 123-4567, email at support@Homerixpro.com, or through the live chat feature on our website. We\'re available 24/7.', 'homerix' ),
+			'answer'   => __( 'You can contact our customer support team via phone at (555) 123-4567, email at support@example.com, or through the live chat feature on our website. We\'re available 24/7.', 'homerix' ),
 			'category' => 'general',
 		),
 		array(
@@ -282,3 +282,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <?php
 get_footer();
+

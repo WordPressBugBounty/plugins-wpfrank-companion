@@ -7,10 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 * Plugin Name:  WPFrank Companion
 * Plugin URI:   https://wordpress.org/plugins/wpfrank-companion
 * Description:  WPFrank Companion plugin provides themes extra settings for front page.
-* Version:      0.3.4
+* Version:      0.3.5
 * Author:       WP Frank
 * Author URI:   https://wpfrank.com/
-* Tested up to: 6.9
+* Tested up to: 7.0
 * Requires:     4.0 or higher
 * License:      GPLv3 or later
 * License URI:  http://www.gnu.org/licenses/gpl-3.0.html

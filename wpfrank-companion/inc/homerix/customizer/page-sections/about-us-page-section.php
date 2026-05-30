@@ -585,7 +585,7 @@ function homerix_about_us_page_controls() {
 					'position'    => 'Founder & CEO',
 					'description' => 'Master plumber with 25+ years of experience. Michael founded Homerix Pro with a vision to provide honest, reliable home repair services.',
 					'linkedin'    => '#',
-					'email'       => 'michael@Homerixpro.com',
+					'email'       => 'michael@example.com',
 				),
 				array(
 					'image'       => get_template_directory_uri() . '/assets/img/customer-2.jpg',
@@ -593,7 +593,7 @@ function homerix_about_us_page_controls() {
 					'position'    => 'Operations Director',
 					'description' => 'Sarah ensures every job runs smoothly and every customer receives exceptional service. 15 years in operations management.',
 					'linkedin'    => '#',
-					'email'       => 'sarah@Homerixpro.com',
+					'email'       => 'sarah@example.com',
 				),
 				array(
 					'image'       => get_template_directory_uri() . '/assets/img/customer-3.jpg',
@@ -601,7 +601,7 @@ function homerix_about_us_page_controls() {
 					'position'    => 'Lead Electrician',
 					'description' => 'Licensed master electrician with expertise in residential and commercial electrical systems. 20 years of experience.',
 					'linkedin'    => '#',
-					'email'       => 'david@Homerixpro.com',
+					'email'       => 'david@example.com',
 				),
 				array(
 					'image'       => get_template_directory_uri() . '/assets/img/customer-1.jpg',
@@ -609,7 +609,7 @@ function homerix_about_us_page_controls() {
 					'position'    => 'Customer Success Manager',
 					'description' => 'Emily leads our customer service team, ensuring every client has a positive experience from booking to completion.',
 					'linkedin'    => '#',
-					'email'       => 'emily@Homerixpro.com',
+					'email'       => 'emily@example.com',
 				),
 			),
 			'fields'    => array(
@@ -1144,4 +1144,5 @@ function homerix_about_us_page_controls() {
 // Initialize sections and controls
 add_action( 'init', 'homerix_about_us_page_section' );
 add_action( 'init', 'homerix_about_us_page_controls' );
+
 

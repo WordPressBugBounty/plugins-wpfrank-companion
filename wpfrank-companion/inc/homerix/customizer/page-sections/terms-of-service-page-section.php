@@ -266,7 +266,7 @@ function homerix_terms_of_service_page_controls() {
 			'label'     => esc_html__( 'Contact Email', 'homerix' ),
 			'section'   => 'homerix_terms_of_service_page_settings',
 			'priority'  => 60,
-			'default'   => 'legal@Homerixpro.com',
+			'default'   => 'legal@example.com',
 			'transport' => 'postMessage',
 		)
 	);
@@ -357,3 +357,4 @@ function homerix_terms_of_service_page_controls() {
 // Initialize functions.
 homerix_terms_of_service_page_section();
 homerix_terms_of_service_page_controls();
+

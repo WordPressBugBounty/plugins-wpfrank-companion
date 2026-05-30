@@ -62,7 +62,7 @@ $sections = get_theme_mod(
 // Contact Information.
 $contact_title           = get_theme_mod( 'privacy_contact_title', __( 'Contact Us', 'homerix' ) );
 $contact_subtitle        = get_theme_mod( 'privacy_contact_subtitle', __( 'If you have any questions about this Privacy Policy, please contact us:', 'homerix' ) );
-$contact_email           = get_theme_mod( 'privacy_contact_email', 'privacy@Homerixpro.com' );
+$contact_email           = get_theme_mod( 'privacy_contact_email', 'privacy@example.com' );
 $contact_phone_enabled   = get_theme_mod( 'privacy_contact_phone_enabled', true );
 $contact_phone           = get_theme_mod( 'privacy_contact_phone', '(555) 123-4567' );
 $contact_address_enabled = get_theme_mod( 'privacy_contact_address_enabled', true );
@@ -182,3 +182,4 @@ $additional_content      = HOMERIX_IS_PRO() ? get_theme_mod( 'privacy_additional
 
 <?php
 get_footer();
+

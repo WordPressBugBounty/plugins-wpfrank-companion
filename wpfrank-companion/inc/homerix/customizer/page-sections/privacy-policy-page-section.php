@@ -250,7 +250,7 @@ function homerix_privacy_policy_page_controls() {
 			'label'     => esc_html__( 'Contact Email', 'homerix' ),
 			'section'   => 'homerix_privacy_policy_page_settings',
 			'priority'  => 60,
-			'default'   => 'privacy@Homerixpro.com',
+			'default'   => 'privacy@example.com',
 			'transport' => 'postMessage',
 		)
 	);
@@ -341,3 +341,4 @@ function homerix_privacy_policy_page_controls() {
 // Initialize functions.
 homerix_privacy_policy_page_section();
 homerix_privacy_policy_page_controls();
+

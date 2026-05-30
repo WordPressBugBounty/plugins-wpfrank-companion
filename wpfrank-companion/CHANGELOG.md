@@ -1,5 +1,25 @@
 # WPFrank Companion - Changelog
 
+## [0.3.5] - 2026-05-30 — Compliance & Placeholders Update
+
+### Overview
+Updated email placeholders across page templates and customizer sections to comply with WordPress.org Theme Review guidelines. All working/registered emails have been replaced with standard RFC 2606 example domain placeholders.
+
+### Files Changed
+- `inc/homerix/customizer/page-sections/about-us-page-section.php`
+- `inc/homerix/customizer/page-sections/contact-us-page-section.php`
+- `inc/homerix/customizer/page-sections/faq-page-section.php`
+- `inc/homerix/customizer/page-sections/privacy-policy-page-section.php`
+- `inc/homerix/customizer/page-sections/terms-of-service-page-section.php`
+- `inc/homerix/page-templates/page-about-us.php`
+- `inc/homerix/page-templates/page-contact-us.php`
+- `inc/homerix/page-templates/page-faq.php`
+- `inc/homerix/page-templates/page-privacy-policy.php`
+- `inc/homerix/page-templates/page-terms-of-service.php`
+
+### Detailed Changes
+- Replaced all instances of `Homerixpro.com` with `example.com` (e.g. `info@Homerixpro.com` -> `info@example.com`, `careers@Homerixpro.com` -> `careers@example.com`).
+
 ## [0.3.4] - 2026-05-12 — Customizer Restoration & Reliability Fixes
 
 ### Overview
