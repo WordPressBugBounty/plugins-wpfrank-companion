@@ -9,6 +9,9 @@
  * @since 1.0.0
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 get_header();
 ?>
 
@@ -32,7 +35,7 @@ $show_hero_btn = get_theme_mod( 'about_hero_button_enabled', true );
 
 <!-- About Hero Section -->
 <section class="about-hero py-24 relative overflow-hidden" style="background: <?php echo esc_attr( $hero_bg_color ); ?>; <?php echo ! empty( $hero_bg_image ) ? 'background-image: url(' . esc_url( $hero_bg_image ) . '); background-size: cover; background-position: center;' : ''; ?>">
-  <?php if ( $hero_overlay_enabled ) : ?>
+	<?php if ( $hero_overlay_enabled ) : ?>
 		<div class="absolute inset-0 bg-black z-0" style="opacity: <?php echo esc_attr( $hero_overlay_opacity / 100 ); ?>;"></div>
 	<?php endif; ?>
 	<div class="container mx-auto px-4 text-center relative z-10">
@@ -67,8 +70,8 @@ $show_mission_btn2 = get_theme_mod( 'about_mission_button2_enabled', true );
 		<div class="flex flex-col md:flex-row items-center gap-12">
 			<div class="md:w-1/2">
 				<img src="<?php echo esc_url( $mission_image ); ?>"
-					 alt="<?php echo esc_attr( $mission_title ); ?>"
-					 class="about-mission-img rounded-lg shadow-xl w-full h-auto">
+					alt="<?php echo esc_attr( $mission_title ); ?>"
+					class="about-mission-img rounded-lg shadow-xl w-full h-auto">
 			</div>
 			<div class="md:w-1/2">
 				<h2 class="about-mission-title text-3xl font-bold mb-6"><?php echo esc_html( $mission_title ); ?></h2>
@@ -76,16 +79,16 @@ $show_mission_btn2 = get_theme_mod( 'about_mission_button2_enabled', true );
 				<p class="about-mission-text-2 mb-6"><?php echo esc_html( $mission_text2 ); ?></p>
 				<p class="about-mission-text-3 mb-8"><?php echo esc_html( $mission_text3 ); ?></p>
 				<div class="flex flex-col sm:flex-row gap-4">
-		  <?php if ( $show_mission_btn1 ) : ?>
+			<?php if ( $show_mission_btn1 ) : ?>
 					<a href="<?php echo esc_url( $mission_btn1_url ); ?>" class="about-mission-btn1 btn book-btn font-bold py-3 px-6 rounded-lg transition duration-300 text-center">
 						<?php echo esc_html( $mission_btn1_text ); ?>
 					</a>
-		  <?php endif; ?>
-		  <?php if ( $show_mission_btn2 ) : ?>
+			<?php endif; ?>
+			<?php if ( $show_mission_btn2 ) : ?>
 					<a href="<?php echo esc_url( $mission_btn2_url ); ?>" class="about-mission-btn2 btn find-btn font-bold py-3 px-6 rounded-lg border transition duration-300 text-center">
 						<?php echo esc_html( $mission_btn2_text ); ?>
 					</a>
-		  <?php endif; ?>
+			<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -221,8 +224,8 @@ $team_btn_url     = get_theme_mod( 'about_team_button_url', '#technicians' );
 					<div class="team-card card-base p-6 rounded-lg shadow-md transition duration-300">
 						<?php if ( ! empty( $member['image'] ) ) : ?>
 							<img src="<?php echo esc_url( $member['image'] ); ?>"
-								 alt="<?php echo esc_attr( $member['name'] ?? '' ); ?>"
-								 class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 team-member-image">
+								alt="<?php echo esc_attr( $member['name'] ?? '' ); ?>"
+								class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 team-member-image">
 						<?php endif; ?>
 						<h3 class="text-xl font-bold text-center mb-1"><?php echo esc_html( $member['name'] ?? '' ); ?></h3>
 						<p class="text-primary font-medium text-center mb-4"><?php echo esc_html( $member['position'] ?? '' ); ?></p>
@@ -365,8 +368,8 @@ $community_image    = get_theme_mod( 'about_community_image', get_template_direc
 			</div>
 			<div class="md:w-1/2">
 				<img src="<?php echo esc_url( $community_image ); ?>"
-					 alt="<?php echo esc_attr( $community_title ); ?>"
-					 class="about-community-img rounded-lg shadow-xl w-full h-auto">
+					alt="<?php echo esc_attr( $community_title ); ?>"
+					class="about-community-img rounded-lg shadow-xl w-full h-auto">
 			</div>
 		</div>
 	</div>

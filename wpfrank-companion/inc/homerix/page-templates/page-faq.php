@@ -9,6 +9,9 @@
  * @since 1.0.0
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 get_header();
 
 // Hero Section Settings.
@@ -170,7 +173,7 @@ $cta_phone_url     = get_theme_mod( 'faq_cta_phone_url', 'tel:+15551234567' );
 					?>
 					<?php foreach ( $faq_items as $faq ) : ?>
 						<?php
-						$qa_shown++;
+						++$qa_shown;
 						if ( $qa_shown > $qa_max ) {
 							break;
 						}

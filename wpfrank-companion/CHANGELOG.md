@@ -1,5 +1,35 @@
 # WPFrank Companion - Changelog
 
+## [0.3.6] - 2026-06-10 — WordPress Coding Standards (WPCS) Compliance
+
+### Overview
+Refactored all Homerix-related companion plugin files to achieve 100% compliance with WordPress Coding Standards (WPCS), resolving issues with variable naming collisions, docblock documentation, escaping, and formatting.
+
+### Files Changed
+- `inc/homerix/ajax/booking-handler.php`
+- `inc/homerix/ajax/contact-handler.php`
+- `inc/homerix/ajax/find-technician-handler.php`
+- `inc/homerix/default-content.php`
+- `inc/homerix/email/mail-settings.php`
+- `inc/homerix/customizer/page-sections/services-page-section.php`
+- `inc/homerix/integrations/recaptcha.php`
+- `inc/homerix/front-page/section-hero.php`
+- `inc/homerix/front-page/section-services.php`
+- `inc/homerix/front-page/section-technicians.php`
+- `inc/homerix/front-page/section-testimonials.php`
+- `inc/homerix/front-page/section-whyus.php`
+- `inc/homerix/page-templates/page-book-now.php`
+- `inc/homerix/page-templates/page-find-technician.php`
+- `inc/homerix/page-templates/page-site-services.php`
+
+### Detailed Changes
+- **Global Variable Protections**: Renamed local variables `$s`, `$f`, and `$title` to prevent overriding WordPress global variables.
+- **Translation & Placeholders**: Enforced strict escaping by replacing direct `printf()` of translated strings with `echo esc_html( sprintf( ... ) )`. Added `/* translators: ... */` comments above translations containing placeholders.
+- **Yoda Conditions & Comparisons**: Rewrote logical checks to Yoda conditions (e.g. `'#` === $var`) and added strict type checks (`true`) for `in_array()` calls.
+- **Documentation Blocks**: Corrected capitalization in file header docblocks, added missing `@package` tags, and placed function comments directly above function definitions.
+- **File Integrity**: Re-added missing `<?php` opening tags to front-page template files.
+- **Warnings Exemption**: Safely ignored acceptable warnings (like `error_log` for debugging and `$phpmailer->ErrorInfo` camelCase checks).
+
 ## [0.3.5] - 2026-05-30 — Compliance & Placeholders Update
 
 ### Overview

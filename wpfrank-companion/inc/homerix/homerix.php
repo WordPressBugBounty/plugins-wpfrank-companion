@@ -1,8 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
-
 /**
  * Homerix Theme Companion Support
  *
@@ -12,6 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package wpfrank-companion
  * @since   0.3.3
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 /**
  * Define Homerix companion constants.
@@ -140,14 +140,14 @@ if ( file_exists( $homerix_default_content_path ) ) {
  */
 function wpfrank_homerix_register_page_templates( $templates ) {
 	$plugin_templates = array(
-		'homerix-companion/page-about-us.php'          => __( 'Homerix About Us', 'wpfrank-companion' ),
-		'homerix-companion/page-book-now.php'           => __( 'Homerix Book Now', 'wpfrank-companion' ),
-		'homerix-companion/page-contact-us.php'         => __( 'Homerix Contact Us', 'wpfrank-companion' ),
-		'homerix-companion/page-faq.php'                => __( 'Homerix FAQ', 'wpfrank-companion' ),
-		'homerix-companion/page-find-technician.php'    => __( 'Homerix Find Technician', 'wpfrank-companion' ),
-		'homerix-companion/page-site-services.php'      => __( 'Homerix Services', 'wpfrank-companion' ),
-		'homerix-companion/page-privacy-policy.php'     => __( 'Homerix Privacy Policy', 'wpfrank-companion' ),
-		'homerix-companion/page-terms-of-service.php'   => __( 'Homerix Terms of Service', 'wpfrank-companion' ),
+		'homerix-companion/page-about-us.php'         => __( 'Homerix About Us', 'wpfrank-companion' ),
+		'homerix-companion/page-book-now.php'         => __( 'Homerix Book Now', 'wpfrank-companion' ),
+		'homerix-companion/page-contact-us.php'       => __( 'Homerix Contact Us', 'wpfrank-companion' ),
+		'homerix-companion/page-faq.php'              => __( 'Homerix FAQ', 'wpfrank-companion' ),
+		'homerix-companion/page-find-technician.php'  => __( 'Homerix Find Technician', 'wpfrank-companion' ),
+		'homerix-companion/page-site-services.php'    => __( 'Homerix Services', 'wpfrank-companion' ),
+		'homerix-companion/page-privacy-policy.php'   => __( 'Homerix Privacy Policy', 'wpfrank-companion' ),
+		'homerix-companion/page-terms-of-service.php' => __( 'Homerix Terms of Service', 'wpfrank-companion' ),
 	);
 
 	return array_merge( $templates, $plugin_templates );
@@ -173,13 +173,13 @@ function wpfrank_homerix_load_page_template( $template ) {
 	// Backward compatibility: also handle old theme template slugs.
 	$old_template_map = array(
 		'page-templates/page-about-us.php'         => 'page-templates/page-about-us.php',
-		'page-templates/page-book-now.php'          => 'page-templates/page-book-now.php',
-		'page-templates/page-contact-us.php'        => 'page-templates/page-contact-us.php',
-		'page-templates/page-faq.php'               => 'page-templates/page-faq.php',
-		'page-templates/page-find-technician.php'   => 'page-templates/page-find-technician.php',
-		'page-templates/page-site-services.php'     => 'page-templates/page-site-services.php',
-		'page-templates/page-privacy-policy.php'    => 'page-templates/page-privacy-policy.php',
-		'page-templates/page-terms-of-service.php'  => 'page-templates/page-terms-of-service.php',
+		'page-templates/page-book-now.php'         => 'page-templates/page-book-now.php',
+		'page-templates/page-contact-us.php'       => 'page-templates/page-contact-us.php',
+		'page-templates/page-faq.php'              => 'page-templates/page-faq.php',
+		'page-templates/page-find-technician.php'  => 'page-templates/page-find-technician.php',
+		'page-templates/page-site-services.php'    => 'page-templates/page-site-services.php',
+		'page-templates/page-privacy-policy.php'   => 'page-templates/page-privacy-policy.php',
+		'page-templates/page-terms-of-service.php' => 'page-templates/page-terms-of-service.php',
 	);
 
 	if ( isset( $old_template_map[ $page_template ] ) ) {
@@ -193,11 +193,11 @@ function wpfrank_homerix_load_page_template( $template ) {
 }
 add_filter( 'template_include', 'wpfrank_homerix_load_page_template' );
 
-/**
- * Render Homerix frontpage sections.
- * This is the main function called by the theme via do_action('wpfrank_homerix_frontpage').
- */
 if ( ! function_exists( 'wpfrank_homerix_frontpage_sections' ) ) :
+	/**
+	 * Render Homerix frontpage sections.
+	 * This is the main function called by the theme via do_action('wpfrank_homerix_frontpage').
+	 */
 	function wpfrank_homerix_frontpage_sections() {
 		// Get section order from customizer.
 		$section_order = homerix_get_section_order();

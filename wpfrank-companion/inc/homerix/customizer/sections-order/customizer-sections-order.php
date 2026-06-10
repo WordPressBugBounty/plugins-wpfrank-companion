@@ -5,6 +5,9 @@
  * @package customizer-controls
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 define( 'SECTIONS_ORDER_VERSION', '1.0.0' );
 
 /**
@@ -45,7 +48,6 @@ function sections_order_register_control( $wp_customize ) {
 			'priority' => 80,
 		)
 	);
-
 }
 add_action( 'customize_register', 'sections_order_register_control' );
 

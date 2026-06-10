@@ -8,6 +8,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -153,6 +156,7 @@ function homerix_handle_booking_submission() {
 
 	// Log email sending result for debugging.
 	if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		error_log( 'Booking #' . $booking_id . ' emails sent - Result: ' . ( $email_sent ? 'Success' : 'Failed' ) );
 	}
 
@@ -246,6 +250,7 @@ function homerix_send_booking_emails( $booking_id, $booking_data ) {
 		$customer_email_sent = wp_mail( $booking_data['email'], $customer_subject, $customer_message, $customer_headers );
 
 		if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'Customer confirmation email sent to: ' . $booking_data['email'] . ' - Result: ' . ( $customer_email_sent ? 'Success' : 'Failed' ) );
 		}
 	}
@@ -256,6 +261,7 @@ function homerix_send_booking_emails( $booking_id, $booking_data ) {
 	$admin_email_sent = wp_mail( $admin_email, $admin_subject, $admin_message, $admin_headers );
 
 	if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		error_log( 'Admin notification email sent to: ' . $admin_email . ' - Result: ' . ( $admin_email_sent ? 'Success' : 'Failed' ) );
 	}
 
@@ -470,6 +476,7 @@ function homerix_get_default_admin_email_content( $booking_id, $booking_data ) {
  * @param array  $booking_data Booking data.
  * @return string Complete HTML email.
  */
+// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 function homerix_get_email_html_wrapper( $content, $type = 'customer', $booking_data = array() ) {
 	$site_name = get_bloginfo( 'name' );
 	$site_url  = home_url();

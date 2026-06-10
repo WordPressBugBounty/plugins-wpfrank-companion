@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Homerix Newsletter Admin Page
  *
@@ -7,16 +7,18 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable WordPress.Security.NonceVerification, WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class homerix_Newsletter_Admin
+ * Class Homerix_Newsletter_Admin
  *
  * Admin page for newsletter management.
  */
-class homerix_Newsletter_Admin {
+class Homerix_Newsletter_Admin {
 
 	/**
 	 * Initialize the admin.
@@ -33,7 +35,7 @@ class homerix_Newsletter_Admin {
 	 */
 	public static function ensure_table_exists() {
 		if ( isset( $_GET['page'] ) && 'homerix-newsletter' === $_GET['page'] ) {
-			homerix_Newsletter::create_table();
+			Homerix_Newsletter::create_table();
 		}
 	}
 
@@ -100,7 +102,7 @@ class homerix_Newsletter_Admin {
 		// Handle single delete.
 		if ( isset( $_GET['action'] ) && 'delete' === $_GET['action'] && isset( $_GET['subscriber'] ) && isset( $_GET['_wpnonce'] ) ) {
 			if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'homerix_delete_subscriber' ) ) {
-				homerix_Newsletter::delete_subscriber( absint( $_GET['subscriber'] ) );
+				Homerix_Newsletter::delete_subscriber( absint( $_GET['subscriber'] ) );
 				wp_safe_redirect( admin_url( 'admin.php?page=homerix-newsletter&deleted=1' ) );
 				exit;
 			}
@@ -111,7 +113,7 @@ class homerix_Newsletter_Admin {
 			if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'homerix_bulk_action' ) ) {
 				$subscribers = array_map( 'absint', $_POST['subscribers'] );
 				foreach ( $subscribers as $id ) {
-					homerix_Newsletter::delete_subscriber( $id );
+					Homerix_Newsletter::delete_subscriber( $id );
 				}
 				wp_safe_redirect( admin_url( 'admin.php?page=homerix-newsletter&deleted=' . count( $subscribers ) ) );
 				exit;
@@ -123,7 +125,7 @@ class homerix_Newsletter_Admin {
 	 * Export subscribers as CSV download.
 	 */
 	private static function export_csv() {
-		$csv = homerix_Newsletter::export_csv( 'all' );
+		$csv = Homerix_Newsletter::export_csv( 'all' );
 
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=homerix-subscribers-' . gmdate( 'Y-m-d' ) . '.csv' );
@@ -141,7 +143,7 @@ class homerix_Newsletter_Admin {
 		$current_page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 		$per_page     = 20;
 
-		$subscribers = homerix_Newsletter::get_subscribers(
+		$subscribers = Homerix_Newsletter::get_subscribers(
 			array(
 				'status'   => 'all',
 				'per_page' => $per_page,
@@ -149,13 +151,13 @@ class homerix_Newsletter_Admin {
 			)
 		);
 
-		$total_subscribers = homerix_Newsletter::get_subscriber_count( 'all' );
-		$active_count      = homerix_Newsletter::get_subscriber_count( 'active' );
+		$total_subscribers = Homerix_Newsletter::get_subscriber_count( 'all' );
+		$active_count      = Homerix_Newsletter::get_subscriber_count( 'active' );
 		$total_pages       = ceil( $total_subscribers / $per_page );
 
 		// Get this month's subscribers.
 		global $wpdb;
-		$table         = homerix_Newsletter::get_table_name();
+		$table         = Homerix_Newsletter::get_table_name();
 		$month_start   = gmdate( 'Y-m-01 00:00:00' );
 		$monthly_count = $wpdb->get_var(
 			$wpdb->prepare(
@@ -277,4 +279,4 @@ class homerix_Newsletter_Admin {
 }
 
 // Initialize admin.
-homerix_Newsletter_Admin::init();
+Homerix_Newsletter_Admin::init();

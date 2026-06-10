@@ -66,7 +66,7 @@ function homerix_configure_smtp( $phpmailer ) {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
 		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase,WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		$phpmailer->SMTPDebug   = 2;
-		$phpmailer->Debugoutput = function( $str, $level ) {
+		$phpmailer->Debugoutput = function ( $str, $level ) {
 			error_log( "SMTP Debug [$level]: $str" );
 		};
 		// phpcs:enable
@@ -79,11 +79,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 	return;
 }
 
+add_action( 'init', 'homerix_add_booking_mail_section' );
 /**
  * Add Booking Mail Settings section via Kirki.
  */
-add_action( 'init', 'homerix_add_booking_mail_section' );
-
 function homerix_add_booking_mail_section() {
 	Kirki::add_section(
 		'homerix_booking_mail',
@@ -96,11 +95,10 @@ function homerix_add_booking_mail_section() {
 	);
 }
 
+add_action( 'init', 'homerix_add_booking_mail_settings' );
 /**
  * Add all email and SMTP settings to Booking Mail section via Kirki.
  */
-add_action( 'init', 'homerix_add_booking_mail_settings' );
-
 function homerix_add_booking_mail_settings() {
 
 	// =====================================================================

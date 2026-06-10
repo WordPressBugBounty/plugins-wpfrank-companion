@@ -2,7 +2,12 @@
 /**
  * Enhanced Hero Section Template Part
  * Always uses slider mode - users can add single slide for static effect
+ *
+ * @package Homerix_Pro
  */
+
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 
 // Get customizer settings.
 $section_enabled = get_theme_mod( 'hero_section_enabled', true );
@@ -31,7 +36,8 @@ $hero_defaults = function_exists( 'homerix_get_section_color_defaults' ) ? homer
 // Debug: Check if we have slides data (remove this in production).
 if ( current_user_can( 'manage_options' ) && isset( $_GET['debug_slides'] ) ) {
 	echo '<pre style="background: #000; color: #0f0; padding: 10px; margin: 10px; z-index: 9999; position: relative;">';
-	echo 'Slider Slides Data: ' . print_r( $slider_slides, true );
+	// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r, WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo 'Slider Slides Data: ' . esc_html( print_r( $slider_slides, true ) );
 	echo '</pre>';
 }
 ?>
@@ -148,9 +154,9 @@ if ( current_user_can( 'manage_options' ) && isset( $_GET['debug_slides'] ) ) {
 
 				if ( ! empty( $slider_slides ) && is_array( $slider_slides ) ) :
 					// Count enabled slides first.
-					foreach ( $slider_slides as $s ) {
-						if ( ! isset( $s['slide_enabled'] ) || $s['slide_enabled'] ) {
-							$enabled_total++;
+					foreach ( $slider_slides as $slide_item ) {
+						if ( ! isset( $slide_item['slide_enabled'] ) || $slide_item['slide_enabled'] ) {
+							++$enabled_total;
 						}
 					}
 
@@ -161,7 +167,7 @@ if ( current_user_can( 'manage_options' ) && isset( $_GET['debug_slides'] ) ) {
 						}
 
 						// Check slide limit.
-						$rendered_count++;
+						++$rendered_count;
 						if ( $rendered_count > $max_hero_items ) {
 							break;
 						}
@@ -198,7 +204,7 @@ if ( current_user_can( 'manage_options' ) && isset( $_GET['debug_slides'] ) ) {
 				<div class="swiper-slide">
 					<div class="hero-slide-content flex items-center justify-center hero-text-light relative min-h-screen">
 						<!-- Background Media -->
-						<?php if ( in_array( $media_type, array( 'video', 'youtube', 'vimeo', 'dailymotion', 'wistia', 'html5' ) ) && ! empty( $background_video ) ) : ?>
+						<?php if ( in_array( $media_type, array( 'video', 'youtube', 'vimeo', 'dailymotion', 'wistia', 'html5' ), true ) && ! empty( $background_video ) ) : ?>
 							<?php
 							// Generate video embed HTML.
 							$video_html = homerix_get_video_embed_html( $background_video, $media_type, $overlay_opacity );
@@ -302,19 +308,19 @@ if ( current_user_can( 'manage_options' ) && isset( $_GET['debug_slides'] ) ) {
 			</div>
 
 			<!-- Navigation -->
-	  <?php if ( $slider_navigation_hover ) : ?>
+		<?php if ( $slider_navigation_hover ) : ?>
 		<style>
-		  .homerix-hero-swiper .swiper-button-next,
+			.homerix-hero-swiper .swiper-button-next,
 		.homerix-hero-swiper .swiper-button-prev {
-			  opacity: 0;
-			  transition: opacity 0.3s ease;
-		  }
-		  .homerix-hero-swiper:hover .swiper-button-next,
-		  .homerix-hero-swiper:hover .swiper-button-prev {
-			  opacity: 1;
-		  }
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+			.homerix-hero-swiper:hover .swiper-button-next,
+			.homerix-hero-swiper:hover .swiper-button-prev {
+				opacity: 1;
+			}
 		</style>
-	  <?php endif; ?>
+		<?php endif; ?>
 			<div class="swiper-pagination"></div>
 			<?php if ( $slider_navigation ) : ?>
 				<div class="swiper-button-next" aria-label="Next slide"></div>

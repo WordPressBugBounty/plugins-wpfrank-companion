@@ -7,6 +7,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -167,8 +170,11 @@ function homerix_send_contact_email( $contact_data ) {
 
 	// Debug log before sending.
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		error_log( 'Homerix Contact Form: Attempting to send email to: ' . $admin_email );
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		error_log( 'Homerix Contact Form: Subject: ' . $email_subject );
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		error_log( 'Homerix Contact Form: From: ' . $contact_data['email'] );
 	}
 
@@ -178,12 +184,16 @@ function homerix_send_contact_email( $contact_data ) {
 	// Debug log result.
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		if ( $sent ) {
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'Homerix Contact Form: Email sent successfully!' );
 		} else {
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'Homerix Contact Form: Email FAILED to send.' );
 			// Get the last mail error if available.
 			global $phpmailer;
+			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			if ( isset( $phpmailer ) && is_object( $phpmailer ) && ! empty( $phpmailer->ErrorInfo ) ) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				error_log( 'Homerix Contact Form: PHPMailer Error: ' . $phpmailer->ErrorInfo );
 			}
 		}

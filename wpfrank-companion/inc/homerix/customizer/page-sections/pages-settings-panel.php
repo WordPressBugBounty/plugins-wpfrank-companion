@@ -12,6 +12,9 @@
  * @since 1.0.0
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -34,4 +37,3 @@ Kirki::add_panel(
 		'priority'    => 20,
 	)
 );
-

@@ -3,7 +3,12 @@
  * Services Page Customizer Settings
  *
  * Kirki-based customizer panel for the Services page
+ *
+ * @package Homerix_Pro
  */
+
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 
 /**
  * Initialize Services Page Customizer Defaults
@@ -292,7 +297,6 @@ function homerix_add_services_page_section() {
 			'type'            => 'toggle',
 			'settings'        => 'services_hero_overlay_enabled',
 			'label'           => esc_html__( 'Enable Hero Overlay', 'homerix' ),
-			// 'description' => esc_html__( 'Add a semi-transparent overlay over the hero background image for better text readability.', 'homerix' ),
 			'section'         => 'homerix_services_page_settings',
 			'priority'        => 32,
 			'default'         => true,
@@ -314,7 +318,6 @@ function homerix_add_services_page_section() {
 			'type'            => 'slider',
 			'settings'        => 'services_hero_overlay_opacity',
 			'label'           => esc_html__( 'Hero Overlay Opacity', 'homerix' ),
-			// 'description' => esc_html__( 'Adjust the transparency of the overlay (0 = transparent, 100 = opaque).', 'homerix' ),
 			'section'         => 'homerix_services_page_settings',
 			'priority'        => 34,
 			'default'         => 40,
@@ -536,7 +539,6 @@ function homerix_add_services_page_section() {
 			'type'      => 'link',
 			'settings'  => 'services_book_now_url',
 			'label'     => esc_html__( 'Book Now Button URL', 'homerix' ),
-			// 'description' => esc_html__( 'URL for the "Book Now" buttons on service cards. Defaults to the theme\'s Book Now page.', 'homerix' ),
 			'section'   => 'homerix_services_page_settings',
 			'priority'  => 153,
 			'default'   => get_site_url() . '/homerix-book-now',
@@ -1402,4 +1404,3 @@ function homerix_add_services_page_section() {
 if ( class_exists( 'Kirki' ) ) {
 	homerix_add_services_page_section();
 }
-

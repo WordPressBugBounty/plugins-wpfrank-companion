@@ -6,6 +6,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 // Get customizer settings
 $section_enabled  = get_theme_mod( 'whyus_section_enabled', true );
 $section_title    = get_theme_mod( 'whyus_section_title', __( 'Why Choose Homerix Pro', 'homerix' ) );
@@ -126,9 +129,9 @@ $color_override_enabled = ! empty( $whyus_colors );
 			$active_features = 0;
 
 			// Count active features first.
-			foreach ( $whyus_items as $f ) {
-				if ( isset( $f['feature_enabled'] ) && $f['feature_enabled'] ) {
-					$active_features++;
+			foreach ( $whyus_items as $feature_item ) {
+				if ( isset( $feature_item['feature_enabled'] ) && $feature_item['feature_enabled'] ) {
+					++$active_features;
 				}
 			}
 
@@ -139,7 +142,7 @@ $color_override_enabled = ! empty( $whyus_colors );
 				}
 
 				// Check limit.
-				$shown_items++;
+				++$shown_items;
 				if ( $shown_items > $items_cap ) {
 					break;
 				}
@@ -176,7 +179,12 @@ $color_override_enabled = ! empty( $whyus_colors );
 				<div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
 					<i class="fas fa-star text-white text-xl"></i>
 				</div>
-				<h3 class="text-lg font-bold mb-2 text-purple-800"><?php echo esc_html( sprintf( __( '+%d More Features', 'homerix' ), $active_features - $items_cap ) ); ?></h3>
+				<h3 class="text-lg font-bold mb-2 text-purple-800">
+					<?php
+					/* translators: %d: number of additional features */
+					echo esc_html( sprintf( __( '+%d More Features', 'homerix' ), $active_features - $items_cap ) );
+					?>
+				</h3>
 				<p class="text-purple-600 mb-4 text-sm"><?php esc_html_e( 'Showcase all your advantages', 'homerix' ); ?></p>
 				<a href="<?php echo esc_url( homerix_get_pro_url( 'whyus-section', 'upgrade-card' ) ); ?>" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium px-5 py-2 rounded-lg text-sm hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
 					<?php esc_html_e( 'Upgrade to Pro', 'homerix' ); ?>

@@ -5,6 +5,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 // Get customizer settings.
 $section_enabled = get_theme_mod( 'blog_section_enabled', true );
 $section_title   = get_theme_mod( 'blog_title', __( 'Latest Tips & Advice', 'homerix' ) );

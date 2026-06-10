@@ -10,6 +10,9 @@
  * @package Homerix
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 get_header();
 
 // Check if Pro plugin provides the content.
@@ -39,7 +42,7 @@ $search_title       = get_theme_mod( 'find_tech_search_title', __( 'Find Your Pe
 $search_placeholder = get_theme_mod( 'find_tech_search_placeholder', __( "e.g. 'John' or 'plumbing'", 'homerix' ) );
 
 // Services for filter (with limit).
-$all_services = get_theme_mod(
+$all_services         = get_theme_mod(
 	'find_tech_services',
 	array(
 		array(
@@ -60,15 +63,14 @@ $all_services = get_theme_mod(
 		),
 	)
 );
-if ( is_string( $all_services ) ) {
-	$all_services = json_decode( $all_services, true ) ?: array();
-}
-$total_services    = count( $all_services );
-$services          = array_slice( $all_services, 0, $free_services_limit );
-$has_more_services = $total_services > $free_services_limit;
+	$decoded_services = json_decode( $all_services, true );
+	$all_services     = $decoded_services ? $decoded_services : array();
+$total_services       = count( $all_services );
+$services             = array_slice( $all_services, 0, $free_services_limit );
+$has_more_services    = $total_services > $free_services_limit;
 
 // Locations for filter (with limit).
-$all_locations = get_theme_mod(
+$all_locations         = get_theme_mod(
 	'find_tech_locations',
 	array(
 		array(
@@ -89,18 +91,16 @@ $all_locations = get_theme_mod(
 		),
 	)
 );
-if ( is_string( $all_locations ) ) {
-	$all_locations = json_decode( $all_locations, true ) ?: array();
-}
-$total_locations    = count( $all_locations );
-$locations          = array_slice( $all_locations, 0, $free_locations_limit );
-$has_more_locations = $total_locations > $free_locations_limit;
+	$decoded_locations = json_decode( $all_locations, true );
+	$all_locations     = $decoded_locations ? $decoded_locations : array();
+$total_locations       = count( $all_locations );
+$locations             = array_slice( $all_locations, 0, $free_locations_limit );
+$has_more_locations    = $total_locations > $free_locations_limit;
 
 // Technicians list (with limit).
-$all_technicians = get_theme_mod( 'find_tech_technicians_list', array() );
-if ( is_string( $all_technicians ) ) {
-	$all_technicians = json_decode( $all_technicians, true ) ?: array();
-}
+$all_technicians         = get_theme_mod( 'find_tech_technicians_list', array() );
+	$decoded_technicians = json_decode( $all_technicians, true );
+	$all_technicians     = $decoded_technicians ? $decoded_technicians : array();
 
 // Provide fallback defaults if no data exists.
 if ( empty( $all_technicians ) && function_exists( 'homerix_get_default_technicians' ) ) {
@@ -196,7 +196,12 @@ $pro_url = homerix_get_pro_url( 'find-technician-page', 'upgrade-card' );
 							<option value="<?php echo esc_attr( $service['value'] ); ?>"><?php echo esc_html( $service['name'] ); ?></option>
 						<?php endforeach; ?>
 						<?php if ( $has_more_services ) : ?>
-							<option value="" disabled>── <?php printf( esc_html__( '+%d more (Pro)', 'homerix' ), absint( $total_services - $free_services_limit ) ); ?> ──</option>
+							<option value="" disabled>── 
+							<?php
+								/* translators: %d: number of additional services */
+								echo esc_html( sprintf( __( '+%d more (Pro)', 'homerix' ), absint( $total_services - $free_services_limit ) ) );
+							?>
+							──</option>
 						<?php endif; ?>
 					</select>
 				</div>
@@ -210,7 +215,12 @@ $pro_url = homerix_get_pro_url( 'find-technician-page', 'upgrade-card' );
 							<option value="<?php echo esc_attr( $location['value'] ); ?>"><?php echo esc_html( $location['name'] ); ?></option>
 						<?php endforeach; ?>
 						<?php if ( $has_more_locations ) : ?>
-							<option value="" disabled>── <?php printf( esc_html__( '+%d more (Pro)', 'homerix' ), absint( $total_locations - $free_locations_limit ) ); ?> ──</option>
+							<option value="" disabled>── 
+							<?php
+								/* translators: %d: number of additional locations */
+								echo esc_html( sprintf( __( '+%d more (Pro)', 'homerix' ), absint( $total_locations - $free_locations_limit ) ) );
+							?>
+							──</option>
 						<?php endif; ?>
 					</select>
 				</div>

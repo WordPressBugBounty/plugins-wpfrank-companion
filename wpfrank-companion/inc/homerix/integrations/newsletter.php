@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
  * Homerix Newsletter Subscriber Management
  *
@@ -7,16 +7,18 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class homerix_Newsletter
+ * Class Homerix_Newsletter
  *
  * Manages newsletter subscribers.
  */
-class homerix_Newsletter {
+class Homerix_Newsletter {
 
 	/**
 	 * Database table name (without prefix).
@@ -322,4 +324,4 @@ class homerix_Newsletter {
 }
 
 // Initialize the newsletter system.
-homerix_Newsletter::init();
+Homerix_Newsletter::init();

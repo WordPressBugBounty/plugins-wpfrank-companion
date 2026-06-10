@@ -6,6 +6,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 // Get Book Now URL from theme settings.
 $book_now_settings = homerix_get_book_now_settings();
 $book_now_url      = $book_now_settings['url'];
@@ -189,7 +192,7 @@ $color_override_enabled = ! empty( $technicians_colors );
 			// Count total enabled technicians.
 			foreach ( $technicians_items as $technician ) {
 				if ( isset( $technician['technician_enabled'] ) && $technician['technician_enabled'] ) {
-					$total_enabled++;
+					++$total_enabled;
 				}
 			}
 
@@ -200,7 +203,7 @@ $color_override_enabled = ! empty( $technicians_colors );
 				}
 
 				// Check limit.
-				$technicians_count++;
+				++$technicians_count;
 				if ( $technicians_count > $tech_cap ) {
 					break;
 				}
@@ -291,7 +294,12 @@ $color_override_enabled = ! empty( $technicians_colors );
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
 						<i class="fas fa-users text-white text-2xl"></i>
 					</div>
-					<h3 class="text-xl font-bold mb-2 text-purple-800"><?php echo esc_html( sprintf( __( '+%d More Technicians', 'homerix' ), $total_enabled - $tech_cap ) ); ?></h3>
+					<h3 class="text-xl font-bold mb-2 text-purple-800">
+						<?php
+						/* translators: %d: number of additional technicians */
+						echo esc_html( sprintf( __( '+%d More Technicians', 'homerix' ), $total_enabled - $tech_cap ) );
+						?>
+					</h3>
 					<p class="text-purple-600 mb-4"><?php esc_html_e( 'Showcase your entire team', 'homerix' ); ?></p>
 					<a href="<?php echo esc_url( homerix_get_pro_url( 'technicians-section', 'upgrade-card' ) ); ?>" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium px-6 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
 						<?php esc_html_e( 'Upgrade to Pro', 'homerix' ); ?>

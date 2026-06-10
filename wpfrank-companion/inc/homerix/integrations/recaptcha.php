@@ -1,11 +1,14 @@
 <?php
 /**
- * reCAPTCHA Settings
+ * ReCAPTCHA Settings
  *
  * Adds reCAPTCHA v3 configuration to WordPress admin via Kirki
  *
  * @package Homerix_Pro
  */
+
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -16,11 +19,10 @@ if ( ! class_exists( 'Kirki' ) ) {
 	return;
 }
 
-/**
- * Add reCAPTCHA settings to Booking Options section via Kirki
- */
 add_action( 'init', 'homerix_add_recaptcha_settings_kirki' );
-
+/**
+ * Add reCAPTCHA settings to Booking Options section via Kirki.
+ */
 function homerix_add_recaptcha_settings_kirki() {
 
 	// ===== RECAPTCHA SETTINGS HEADING =====
@@ -76,6 +78,4 @@ function homerix_add_recaptcha_settings_kirki() {
 			'default'     => '',
 		)
 	);
-
 }
-

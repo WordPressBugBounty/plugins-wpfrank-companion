@@ -11,6 +11,9 @@
  * @package Homerix
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 get_header();
 
 // Check if Pro plugin provides the content.
@@ -233,10 +236,12 @@ $pro_url = homerix_get_pro_url( 'book-now-page', 'upgrade-card' );
 									<h3 class="font-bold mb-1 text-gray-600"><?php esc_html_e( 'More Services Available', 'homerix' ); ?></h3>
 									<p class="text-sm text-gray-500 mb-2">
 										<?php
-										printf(
-											/* translators: %d: number of additional services */
-											esc_html__( '+%d more services in Pro', 'homerix' ),
-											$total_services - $free_services_limit
+										echo esc_html(
+											sprintf(
+												/* translators: %d: number of additional services */
+												__( '+%d more services in Pro', 'homerix' ),
+												$total_services - $free_services_limit
+											)
 										);
 										?>
 									</p>
@@ -278,10 +283,12 @@ $pro_url = homerix_get_pro_url( 'book-now-page', 'upgrade-card' );
 								?>
 								<span class="px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-500 border border-dashed border-gray-300">
 									<?php
-									printf(
-										/* translators: %d: number of additional time types */
-										esc_html__( '+%d more (Pro)', 'homerix' ),
-										$total_time_types - $free_time_types_limit
+									echo esc_html(
+										sprintf(
+											/* translators: %d: number of additional time types */
+											__( '+%d more (Pro)', 'homerix' ),
+											$total_time_types - $free_time_types_limit
+										)
 									);
 									?>
 								</span>

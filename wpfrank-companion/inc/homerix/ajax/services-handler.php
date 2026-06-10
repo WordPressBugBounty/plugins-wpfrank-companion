@@ -3,6 +3,8 @@
  * Services Page AJAX Handler
  *
  * Handles AJAX requests for services page
+ *
+ * @package Homerix_Pro
  */
 
 /**
@@ -169,4 +171,3 @@ function homerix_get_why_choose_ajax() {
 }
 add_action( 'wp_ajax_get_why_choose', 'homerix_get_why_choose_ajax' );
 add_action( 'wp_ajax_nopriv_get_why_choose', 'homerix_get_why_choose_ajax' );
-

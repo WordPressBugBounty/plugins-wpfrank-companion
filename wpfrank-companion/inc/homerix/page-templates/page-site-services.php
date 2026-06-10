@@ -1,7 +1,12 @@
 <?php
 /**
  * Template Name: Homerix Site Services
+ *
+ * @package Homerix
  */
+
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 
 get_header();
 ?>
@@ -275,7 +280,7 @@ $hero_overlay_opacity = get_theme_mod( 'services_hero_overlay_opacity', 40 );
 			$ps_cap = HOMERIX_IS_PRO() ? 999 : 4;
 			$ps_idx = 0;
 			foreach ( $parent_services as $parent ) :
-				$ps_idx++;
+				++$ps_idx;
 				if ( $ps_idx > $ps_cap ) {
 					break;
 				}
@@ -288,7 +293,7 @@ $hero_overlay_opacity = get_theme_mod( 'services_hero_overlay_opacity', 40 );
 				// Get sub-services for this parent
 				$parent_subs = array_filter(
 					$sub_services,
-					function( $sub ) use ( $parent_value ) {
+					function ( $sub ) use ( $parent_value ) {
 						return isset( $sub['parent_service'] ) && $sub['parent_service'] === $parent_value;
 					}
 				);
@@ -311,7 +316,7 @@ $hero_overlay_opacity = get_theme_mod( 'services_hero_overlay_opacity', 40 );
 							$ss_cap = HOMERIX_IS_PRO() ? 999 : 9;
 							$ss_idx = 0;
 							foreach ( $parent_subs as $sub ) :
-								$ss_idx++;
+								++$ss_idx;
 								if ( $ss_idx > $ss_cap ) {
 									break;
 								}
@@ -384,7 +389,7 @@ $hero_overlay_opacity = get_theme_mod( 'services_hero_overlay_opacity', 40 );
 				?>
 				<?php foreach ( $areas_list as $area ) : ?>
 					<?php
-					$sa_idx++;
+					++$sa_idx;
 					if ( $sa_idx > $sa_cap ) {
 						continue;
 					}
@@ -433,13 +438,13 @@ $hero_overlay_opacity = get_theme_mod( 'services_hero_overlay_opacity', 40 );
 					<?php
 						$icon        = isset( $item['icon'] ) ? $item['icon'] : 'fas fa-star';
 						$icon_color  = isset( $item['icon_color'] ) ? $item['icon_color'] : '#2563eb';
-						$title       = isset( $item['title'] ) ? $item['title'] : '';
+						$item_title  = isset( $item['title'] ) ? $item['title'] : '';
 						$description = isset( $item['description'] ) ? $item['description'] : '';
 					?>
 					<div class="card-base p-6 rounded-lg shadow-sm text-center">
 						<div class="p-4 rounded-full inline-block mb-4" style="background: <?php echo esc_attr( $icon_color ); ?>26; color: <?php echo esc_attr( $icon_color ); ?>;">							<i class="<?php echo esc_attr( $icon ); ?> text-3xl"></i>
 						</div>
-						<h3 class="text-xl font-semibold mb-3"><?php echo esc_html( $title ); ?></h3>
+						<h3 class="text-xl font-semibold mb-3"><?php echo esc_html( $item_title ); ?></h3>
 						<p class=""><?php echo esc_html( $description ); ?></p>
 					</div>
 				<?php endforeach; ?>

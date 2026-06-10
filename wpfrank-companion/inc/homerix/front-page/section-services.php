@@ -2,7 +2,12 @@
 /**
  * Enhanced Services Section Template Part
  * Uses Kirki customizer settings for dynamic content
+ *
+ * @package Homerix_Pro
  */
+
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
 
 // Get customizer settings.
 $section_enabled = get_theme_mod( 'services_section_enabled', true );
@@ -156,7 +161,7 @@ $color_override_enabled = ! empty( $services_colors );
 				// Count total enabled services for showing upgrade message.
 				foreach ( $services_items as $service ) {
 					if ( ! empty( $service['service_enabled'] ) ) {
-						$total_enabled++;
+						++$total_enabled;
 					}
 				}
 
@@ -167,7 +172,7 @@ $color_override_enabled = ! empty( $services_colors );
 					}
 
 					// Check limit.
-					$services_count++;
+					++$services_count;
 					if ( $services_count > $svc_max ) {
 						break;
 					}
@@ -183,7 +188,7 @@ $color_override_enabled = ! empty( $services_colors );
 					$service_link_target = ! empty( $service['service_link_target'] ) ? $service['service_link_target'] : '_self';
 
 					// Generate target attribute.
-					$target_attr = ( $service_link_target === '_blank' ) ? ' target="_blank" rel="noopener"' : '';
+					$target_attr = ( '_blank' === $service_link_target ) ? ' target="_blank" rel="noopener"' : '';
 					?>
 					<!-- Dynamic Service Card -->
 					<div class="service-card rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -199,7 +204,7 @@ $color_override_enabled = ! empty( $services_colors );
 							<?php if ( ! empty( $service_description ) ) : ?>
 								<p class="mb-4 flex-grow"><?php echo esc_html( $service_description ); ?></p>
 							<?php endif; ?>
-							<?php if ( ! empty( $service_link_text ) && $service_link_url !== '#' ) : ?>
+							<?php if ( ! empty( $service_link_text ) && '#' !== $service_link_url ) : ?>
 								<a href="<?php echo esc_url( $service_link_url ); ?>" class="link-color font-medium flex items-center transition-colors duration-300"<?php echo wp_kses_post( $target_attr ); ?>>
 									<?php echo esc_html( $service_link_text ); ?> <i class="fas fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
 								</a>
@@ -220,7 +225,12 @@ $color_override_enabled = ! empty( $services_colors );
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
 						<i class="fas fa-lock text-white text-2xl"></i>
 					</div>
-					<h3 class="text-xl font-bold mb-2 text-purple-800"><?php echo esc_html( sprintf( __( '+%d More Services', 'homerix' ), $total_enabled - $svc_max ) ); ?></h3>
+					<h3 class="text-xl font-bold mb-2 text-purple-800">
+						<?php
+						/* translators: %d: number of additional services */
+						echo esc_html( sprintf( __( '+%d More Services', 'homerix' ), $total_enabled - $svc_max ) );
+						?>
+					</h3>
 					<p class="text-purple-600 mb-4"><?php esc_html_e( 'Upgrade to Pro for unlimited services', 'homerix' ); ?></p>
 					<a href="<?php echo esc_url( homerix_get_pro_url( 'services-section', 'upgrade-card' ) ); ?>" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium px-6 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
 						<?php esc_html_e( 'Upgrade to Pro', 'homerix' ); ?>

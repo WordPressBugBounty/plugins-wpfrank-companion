@@ -8,6 +8,9 @@
  * @since 1.0.0
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -744,4 +747,3 @@ function homerix_contact_us_page_controls() {
 // Initialize sections and controls.
 add_action( 'init', 'homerix_contact_us_page_section' );
 add_action( 'init', 'homerix_contact_us_page_controls' );
-

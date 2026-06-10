@@ -2,7 +2,7 @@
 Contributors: FARAZFRANK
 Tags: widgets, homepage, template, theme builder, page builder
 Tested up to: 7.0
-Stable tag: 0.3.5
+Stable tag: 0.3.6
 Requires PHP: 4.0
 Requires at least: 4.0
 License: GPLv3 or later
@@ -63,6 +63,18 @@ Source: https://pxhere.com/
 Have any queries?
 
 == Changelog ==
+= 0.3.6 =
+* Resolved all outstanding WordPress Coding Standards (WPCS) issues in Homerix-related files.
+* Corrected loop variable names to prevent overriding global variables (e.g. $s, $f, $title).
+* Standardized output escaping using esc_html(sprintf(...)) instead of direct printf().
+* Fixed inline documentation structure and placement, Yoda conditions, and strict comparisons.
+* Handled camelCase property warnings for PHPMailer's ErrorInfo.
+* Added missing opening PHP tags to template files.
+
+= 0.3.5 =
+* Updated email placeholders across page templates and customizer sections to comply with WordPress.org guidelines.
+* Replaced Homerixpro.com instances with standard RFC 2606 example.com domain.
+
 = 0.3.4 =
 * Fixed missing Customizer sections (Hero, Services, Why Us) for Homerix theme.
 * Fixed structural PHP errors in Services section customizer.

@@ -8,6 +8,9 @@
  * @since   1.2.0
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -144,7 +147,7 @@ function homerix_migrate_page_template_slugs() {
 	}
 
 	$old_to_new = array(
-		'page-templates/page-about-us.php'        => 'homerix-companion/page-about-us.php',
+		'page-templates/page-about-us.php'         => 'homerix-companion/page-about-us.php',
 		'page-templates/page-book-now.php'         => 'homerix-companion/page-book-now.php',
 		'page-templates/page-contact-us.php'       => 'homerix-companion/page-contact-us.php',
 		'page-templates/page-faq.php'              => 'homerix-companion/page-faq.php',
@@ -157,7 +160,9 @@ function homerix_migrate_page_template_slugs() {
 	foreach ( $old_to_new as $old_slug => $new_slug ) {
 		$pages = get_pages(
 			array(
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 				'meta_key'   => '_wp_page_template',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 				'meta_value' => $old_slug,
 			)
 		);

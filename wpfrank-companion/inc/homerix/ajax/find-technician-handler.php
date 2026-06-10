@@ -13,35 +13,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Get technicians via AJAX
+ * Get technicians via AJAX.
  */
 add_action( 'wp_ajax_get_technicians', 'homerix_get_technicians_ajax' );
 add_action( 'wp_ajax_nopriv_get_technicians', 'homerix_get_technicians_ajax' );
 
+/**
+ * AJAX callback to retrieve technicians.
+ *
+ * @return void
+ */
 function homerix_get_technicians_ajax() {
-	// Get parameters
-	$search   = isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '';
-	$service  = isset( $_POST['service'] ) ? sanitize_text_field( wp_unslash( $_POST['service'] ) ) : '';
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$search = isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '';
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$service = isset( $_POST['service'] ) ? sanitize_text_field( wp_unslash( $_POST['service'] ) ) : '';
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
 	$location = isset( $_POST['location'] ) ? sanitize_text_field( wp_unslash( $_POST['location'] ) ) : '';
-	$page     = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$page = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
 	$per_page = isset( $_POST['per_page'] ) ? absint( $_POST['per_page'] ) : 12;
 
-	// Build query arguments
+	// Build query arguments.
 	$args = array(
 		'post_type'      => 'technicians',
 		'posts_per_page' => $per_page,
 		'paged'          => $page,
 		'orderby'        => 'meta_value_num',
+		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 		'meta_key'       => 'technician_rating',
 		'order'          => 'DESC',
 	);
 
-	// Add search
+	// Add search.
 	if ( ! empty( $search ) ) {
 		$args['s'] = $search;
 	}
 
-	// Add service filter
+	// Add service filter.
 	if ( ! empty( $service ) ) {
 		$args['meta_query'][] = array(
 			'key'     => 'technician_service',
@@ -50,7 +60,7 @@ function homerix_get_technicians_ajax() {
 		);
 	}
 
-	// Add location filter
+	// Add location filter.
 	if ( ! empty( $location ) ) {
 		$args['meta_query'][] = array(
 			'key'     => 'technician_location',
@@ -59,7 +69,7 @@ function homerix_get_technicians_ajax() {
 		);
 	}
 
-	// Get technicians
+	// Get technicians.
 	$query       = new WP_Query( $args );
 	$technicians = array();
 
@@ -68,25 +78,29 @@ function homerix_get_technicians_ajax() {
 			$query->the_post();
 			$post_id = get_the_ID();
 
-			// Get technician meta data
+			// Get technician meta data.
 			$name              = get_the_title();
 			$specialty         = get_post_meta( $post_id, 'technician_specialty', true );
 			$description       = get_post_meta( $post_id, 'technician_description', true );
 			$image             = get_post_meta( $post_id, 'technician_image', true );
-			$rating            = floatval( get_post_meta( $post_id, 'technician_rating', true ) ) ?: 4.5;
-			$reviews           = absint( get_post_meta( $post_id, 'technician_reviews', true ) ) ?: 0;
-			$availability      = get_post_meta( $post_id, 'technician_availability', true ) ?: 'available';
-			$availability_text = get_post_meta( $post_id, 'technician_availability_text', true ) ?: 'AVAILABLE NOW';
+			$rating            = floatval( get_post_meta( $post_id, 'technician_rating', true ) );
+			$rating            = $rating ? $rating : 4.5;
+			$reviews           = absint( get_post_meta( $post_id, 'technician_reviews', true ) );
+			$reviews           = $reviews ? $reviews : 0;
+			$availability      = get_post_meta( $post_id, 'technician_availability', true );
+			$availability      = $availability ? $availability : 'available';
+			$availability_text = get_post_meta( $post_id, 'technician_availability_text', true );
+			$availability_text = $availability_text ? $availability_text : 'AVAILABLE NOW';
 			$skills            = get_post_meta( $post_id, 'technician_skills', true );
 			$location          = get_post_meta( $post_id, 'technician_location', true );
 			$profile_url       = get_permalink();
 
-			// Use placeholder image if not set
+			// Use placeholder image if not set.
 			if ( empty( $image ) ) {
-				$image = 'https://randomuser.me/api/portraits/men/' . ( rand( 1, 70 ) ) . '.jpg';
+				$image = 'https://randomuser.me/api/portraits/men/' . ( wp_rand( 1, 70 ) ) . '.jpg';
 			}
 
-			// Parse skills if JSON
+			// Parse skills if JSON.
 			if ( is_string( $skills ) ) {
 				$skills = json_decode( $skills, true );
 			}
@@ -113,7 +127,7 @@ function homerix_get_technicians_ajax() {
 
 	wp_reset_postdata();
 
-	// Prepare response
+	// Prepare response.
 	$response = array(
 		'success' => true,
 		'data'    => array(
@@ -131,12 +145,18 @@ function homerix_get_technicians_ajax() {
 }
 
 /**
- * Get single technician profile via AJAX
+ * Get single technician profile via AJAX.
  */
 add_action( 'wp_ajax_get_technician_profile', 'homerix_get_technician_profile_ajax' );
 add_action( 'wp_ajax_nopriv_get_technician_profile', 'homerix_get_technician_profile_ajax' );
 
+/**
+ * AJAX callback to retrieve a technician profile.
+ *
+ * @return void
+ */
 function homerix_get_technician_profile_ajax() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
 	$technician_id = isset( $_POST['technician_id'] ) ? absint( $_POST['technician_id'] ) : 0;
 
 	if ( ! $technician_id ) {
@@ -149,7 +169,7 @@ function homerix_get_technician_profile_ajax() {
 		wp_send_json_error( array( 'message' => 'Technician not found' ) );
 	}
 
-	// Get all meta data
+	// Get all meta data.
 	$meta       = get_post_meta( $technician_id );
 	$meta_array = array();
 
@@ -169,4 +189,3 @@ function homerix_get_technician_profile_ajax() {
 
 	wp_send_json( $response );
 }
-

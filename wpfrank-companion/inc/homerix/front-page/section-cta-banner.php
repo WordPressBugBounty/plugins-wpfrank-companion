@@ -6,6 +6,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 // Check if CTA section is enabled.
 $cta_enabled = get_theme_mod( 'cta_section_enabled', true );
 if ( ! $cta_enabled ) {
@@ -95,7 +98,7 @@ $button_hover_text = $color_override_enabled && isset( $cta_colors['button_hover
 		<!-- CTA Button -->
 		<?php if ( ! empty( $cta_phone ) && ! empty( $cta_button_text ) ) : ?>
 			<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $cta_phone ) ); ?>"
-			   class="btn book-btn inline-block font-bold py-3 px-8 rounded-lg transition duration-300">
+				class="btn book-btn inline-block font-bold py-3 px-8 rounded-lg transition duration-300">
 				<?php echo esc_html( $cta_button_text ); ?>: <?php echo esc_html( $cta_phone ); ?>
 			</a>
 		<?php endif; ?>

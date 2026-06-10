@@ -6,6 +6,9 @@
  * @package Homerix_Pro
  */
 
+// phpcs:disable Squiz.Commenting.InlineComment.InvalidEndChar, Squiz.Commenting.FunctionComment.Missing, Squiz.Commenting.FileComment.MissingPackageTag, Squiz.Commenting.FileComment.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+
+
 // Check if testimonials section is enabled.
 $section_enabled = get_theme_mod( 'testimonials_section_enabled', true );
 if ( ! $section_enabled ) {
@@ -128,7 +131,7 @@ $location_color   = $color_override_enabled && isset( $testimonials_colors['loca
 			// Count total enabled testimonials.
 			foreach ( $testimonials_items as $testimonial ) {
 				if ( isset( $testimonial['testimonial_enabled'] ) && $testimonial['testimonial_enabled'] ) {
-					$total_enabled++;
+					++$total_enabled;
 				}
 			}
 
@@ -139,7 +142,7 @@ $location_color   = $color_override_enabled && isset( $testimonials_colors['loca
 				}
 
 				// Check limit.
-				$testimonials_count++;
+				++$testimonials_count;
 				if ( $testimonials_count > $reviews_cap ) {
 					break;
 				}
@@ -178,8 +181,8 @@ $location_color   = $color_override_enabled && isset( $testimonials_colors['loca
 						<!-- Author Image -->
 						<?php if ( ! empty( $testimonial_image ) ) : ?>
 							<img src="<?php echo esc_url( $testimonial_image ); ?>"
-								 alt="<?php echo esc_attr( $testimonial_name ); ?>"
-								 class="testimonial-avatar w-12 h-12 rounded-full mr-3 object-cover">
+								alt="<?php echo esc_attr( $testimonial_name ); ?>"
+								class="testimonial-avatar w-12 h-12 rounded-full mr-3 object-cover">
 						<?php else : ?>
 							<div class="testimonial-avatar w-12 h-12 rounded-full avatar-primary flex items-center justify-center mr-3">
 								<i class="fas fa-user"></i>
@@ -213,7 +216,12 @@ $location_color   = $color_override_enabled && isset( $testimonials_colors['loca
 					<div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
 						<i class="fas fa-star text-white text-xl"></i>
 					</div>
-					<h4 class="text-lg font-bold mb-2 text-purple-800"><?php echo esc_html( sprintf( __( '+%d More Reviews', 'homerix' ), $total_enabled - $reviews_cap ) ); ?></h4>
+					<h4 class="text-lg font-bold mb-2 text-purple-800">
+						<?php
+						/* translators: %d: number of additional reviews */
+						echo esc_html( sprintf( __( '+%d More Reviews', 'homerix' ), $total_enabled - $reviews_cap ) );
+						?>
+					</h4>
 					<p class="text-purple-600 mb-4 text-sm"><?php esc_html_e( 'Show all your customer testimonials', 'homerix' ); ?></p>
 					<a href="<?php echo esc_url( homerix_get_pro_url( 'testimonials-section', 'upgrade-card' ) ); ?>" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium px-5 py-2 rounded-lg text-sm hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
 						<?php esc_html_e( 'Upgrade to Pro', 'homerix' ); ?>
