@@ -63,8 +63,12 @@ $all_services         = get_theme_mod(
 		),
 	)
 );
+if ( is_string( $all_services ) ) {
 	$decoded_services = json_decode( $all_services, true );
-	$all_services     = $decoded_services ? $decoded_services : array();
+	$all_services     = is_array( $decoded_services ) ? $decoded_services : array();
+} elseif ( ! is_array( $all_services ) ) {
+	$all_services = array();
+}
 $total_services       = count( $all_services );
 $services             = array_slice( $all_services, 0, $free_services_limit );
 $has_more_services    = $total_services > $free_services_limit;
@@ -91,16 +95,24 @@ $all_locations         = get_theme_mod(
 		),
 	)
 );
+if ( is_string( $all_locations ) ) {
 	$decoded_locations = json_decode( $all_locations, true );
-	$all_locations     = $decoded_locations ? $decoded_locations : array();
+	$all_locations     = is_array( $decoded_locations ) ? $decoded_locations : array();
+} elseif ( ! is_array( $all_locations ) ) {
+	$all_locations = array();
+}
 $total_locations       = count( $all_locations );
 $locations             = array_slice( $all_locations, 0, $free_locations_limit );
 $has_more_locations    = $total_locations > $free_locations_limit;
 
 // Technicians list (with limit).
 $all_technicians         = get_theme_mod( 'find_tech_technicians_list', array() );
+if ( is_string( $all_technicians ) ) {
 	$decoded_technicians = json_decode( $all_technicians, true );
-	$all_technicians     = $decoded_technicians ? $decoded_technicians : array();
+	$all_technicians     = is_array( $decoded_technicians ) ? $decoded_technicians : array();
+} elseif ( ! is_array( $all_technicians ) ) {
+	$all_technicians = array();
+}
 
 // Provide fallback defaults if no data exists.
 if ( empty( $all_technicians ) && function_exists( 'homerix_get_default_technicians' ) ) {
@@ -356,6 +368,16 @@ $pro_url = homerix_get_pro_url( 'find-technician-page', 'upgrade-card' );
 <?php
 // Enqueue find technician script.
 wp_enqueue_script( 'homerix-find-technician', get_template_directory_uri() . '/assets/js/frontend/find-technician.js', array(), defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0', true );
+
+// Localize script with AJAX URL and security nonce.
+wp_localize_script(
+	'homerix-find-technician',
+	'HomerixFindTech',
+	array(
+		'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+		'nonce'   => wp_create_nonce( 'homerix_find_tech_nonce' ),
+	)
+);
 ?>
 
 </main><!-- #primary -->

@@ -153,37 +153,57 @@ add_action( 'wp_ajax_nopriv_get_technician_profile', 'homerix_get_technician_pro
 /**
  * AJAX callback to retrieve a technician profile.
  *
+ * Secured: requires nonce, restricts to published posts only,
+ * and returns only an explicit allowlist of public meta fields.
+ *
  * @return void
  */
 function homerix_get_technician_profile_ajax() {
-	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	// Verify nonce.
+	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'homerix_find_tech_nonce' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Security check failed.', 'wpfrank-companion' ) ) );
+	}
+
 	$technician_id = isset( $_POST['technician_id'] ) ? absint( $_POST['technician_id'] ) : 0;
 
 	if ( ! $technician_id ) {
-		wp_send_json_error( array( 'message' => 'Invalid technician ID' ) );
+		wp_send_json_error( array( 'message' => __( 'Invalid technician ID.', 'wpfrank-companion' ) ) );
 	}
 
 	$post = get_post( $technician_id );
 
-	if ( ! $post || 'technicians' !== $post->post_type ) {
-		wp_send_json_error( array( 'message' => 'Technician not found' ) );
+	// Ensure the post exists, is the correct type, AND is published.
+	if ( ! $post || 'technicians' !== $post->post_type || 'publish' !== $post->post_status ) {
+		wp_send_json_error( array( 'message' => __( 'Technician not found.', 'wpfrank-companion' ) ) );
 	}
 
-	// Get all meta data.
-	$meta       = get_post_meta( $technician_id );
-	$meta_array = array();
+	// Allowlist of public meta keys — only return fields the frontend needs.
+	$allowed_meta_keys = array(
+		'technician_specialty',
+		'technician_description',
+		'technician_image',
+		'technician_rating',
+		'technician_reviews',
+		'technician_availability',
+		'technician_availability_text',
+		'technician_skills',
+		'technician_location',
+		'technician_service',
+	);
 
-	foreach ( $meta as $key => $value ) {
-		$meta_array[ $key ] = is_array( $value ) ? $value[0] : $value;
+	$meta_array = array();
+	foreach ( $allowed_meta_keys as $key ) {
+		$meta_array[ $key ] = get_post_meta( $technician_id, $key, true );
 	}
 
 	$response = array(
 		'success' => true,
 		'data'    => array(
-			'id'      => $technician_id,
-			'title'   => $post->post_title,
-			'content' => $post->post_content,
-			'meta'    => $meta_array,
+			'id'          => $technician_id,
+			'title'       => $post->post_title,
+			'content'     => $post->post_content,
+			'meta'        => $meta_array,
+			'profile_url' => get_permalink( $technician_id ),
 		),
 	);
 

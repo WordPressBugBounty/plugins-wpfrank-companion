@@ -119,8 +119,12 @@ class Homerix_Newsletter {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid email address.', 'homerix' ) ) );
 		}
 
-		// Get source.
-		$source = isset( $_POST['source'] ) ? sanitize_text_field( wp_unslash( $_POST['source'] ) ) : 'footer';
+		// Get source — restrict to known allowlist of valid sources.
+		$allowed_sources = array( 'footer', 'popup', 'sidebar', 'header', 'inline', 'widget' );
+		$source          = isset( $_POST['source'] ) ? sanitize_text_field( wp_unslash( $_POST['source'] ) ) : 'footer';
+		if ( ! in_array( $source, $allowed_sources, true ) ) {
+			$source = 'footer';
+		}
 
 		// Try to add subscriber.
 		$result = self::add_subscriber( $email, $source );
@@ -311,15 +315,39 @@ class Homerix_Newsletter {
 		foreach ( $subscribers as $subscriber ) {
 			$output .= sprintf(
 				'"%s","%s","%s","%s","%s"' . "\n",
-				$subscriber->email,
-				$subscriber->subscribed_at,
-				$subscriber->source,
-				$subscriber->status,
-				$subscriber->ip_address
+				self::sanitize_csv_field( $subscriber->email ),
+				self::sanitize_csv_field( $subscriber->subscribed_at ),
+				self::sanitize_csv_field( $subscriber->source ),
+				self::sanitize_csv_field( $subscriber->status ),
+				self::sanitize_csv_field( $subscriber->ip_address )
 			);
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Sanitize a value for safe inclusion in a CSV cell.
+	 *
+	 * Neutralizes spreadsheet formula injection (CWE-1236) by prefixing
+	 * dangerous leading characters with a single quote, and escapes
+	 * embedded double-quotes per RFC 4180.
+	 *
+	 * @param string $value Raw cell value.
+	 * @return string Sanitized value safe for CSV.
+	 */
+	private static function sanitize_csv_field( $value ) {
+		$value = (string) $value;
+
+		// Escape embedded double-quotes (RFC 4180).
+		$value = str_replace( '"', '""', $value );
+
+		// Neutralize spreadsheet formula prefixes.
+		if ( isset( $value[0] ) && in_array( $value[0], array( '=', '+', '-', '@', "\t", "\r" ), true ) ) {
+			$value = "'" . $value;
+		}
+
+		return $value;
 	}
 }
 

@@ -1,5 +1,32 @@
 # WPFrank Companion - Changelog
 
+## [0.3.8] - 2026-06-13 — Security Fixes & PHP 8 Compatibility
+## [0.3.7] - 2026-06-13 — Homerix Find Technician Fixes.
+
+### Overview
+Addressed 2 security findings from the WordPress.org Plugin Review Team and fixed a PHP 8+ compatibility issue causing a critical error on the Find Technician page.
+
+### Security Fixes
+
+#### Finding 1: Unauthenticated Technician Data Disclosure (High — IDOR)
+- Added nonce verification (`homerix_find_tech_nonce`) to the `get_technician_profile` AJAX endpoint.
+- Restricted endpoint to published posts only (`post_status === 'publish'`).
+- Replaced full `get_post_meta()` dump with an explicit allowlist of 10 public meta keys.
+- Added nonce to `wp_localize_script` in both companion and Pro templates.
+
+#### Finding 2: CSV Formula Injection via Newsletter Subscriber Input (Medium — CWE-1236)
+- Added `sanitize_csv_field()` method that neutralizes spreadsheet formula prefixes (`=`, `+`, `-`, `@`, tab, CR) and escapes embedded double-quotes (RFC 4180).
+- All 5 CSV export fields now pass through `sanitize_csv_field()` before output.
+- Restricted `$_POST['source']` to an allowlist of valid values: `footer`, `popup`, `sidebar`, `header`, `inline`, `widget`.
+
+### Bug Fixes
+- Fixed `json_decode()` TypeError on PHP 8+ when `get_theme_mod()` returns a default array instead of a JSON string (services, locations, technicians).
+
+### Files Changed
+- `inc/homerix/ajax/find-technician-handler.php`
+- `inc/homerix/integrations/newsletter.php`
+- `inc/homerix/page-templates/page-find-technician.php`
+
 ## [0.3.6] - 2026-06-10 — WordPress Coding Standards (WPCS) Compliance
 
 ### Overview

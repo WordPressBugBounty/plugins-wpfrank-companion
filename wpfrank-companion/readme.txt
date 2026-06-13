@@ -2,7 +2,7 @@
 Contributors: FARAZFRANK
 Tags: widgets, homepage, template, theme builder, page builder
 Tested up to: 7.0
-Stable tag: 0.3.6
+Stable tag: 0.3.8
 Requires PHP: 4.0
 Requires at least: 4.0
 License: GPLv3 or later
@@ -63,6 +63,11 @@ Source: https://pxhere.com/
 Have any queries?
 
 == Changelog ==
+= 0.3.7 =
+* Security: Fixed unauthenticated technician data disclosure (IDOR) — added nonce, published-only check, and meta key allowlist.
+* Security: Fixed CSV formula injection in newsletter export — added cell sanitization and source field allowlist.
+* Fixed PHP 8+ critical error on Find Technician page caused by json_decode() on array values.
+
 = 0.3.6 =
 * Resolved all outstanding WordPress Coding Standards (WPCS) issues in Homerix-related files.
 * Corrected loop variable names to prevent overriding global variables (e.g. $s, $f, $title).
