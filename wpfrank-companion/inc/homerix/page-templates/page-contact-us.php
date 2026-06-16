@@ -435,7 +435,7 @@ $cta_bg_color  = get_theme_mod( 'contact_cta_bg_color', '#2563EB' );
 if ( empty( trim( $form_shortcode ) ) ) {
 	wp_enqueue_script(
 		'homerix-contact-form',
-		get_template_directory_uri() . '/assets/js/frontend/contact-form.js',
+		WPFRANK_HOMERIX_URL . 'assets/js/contact-form.js',
 		array(),
 		defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0',
 		true

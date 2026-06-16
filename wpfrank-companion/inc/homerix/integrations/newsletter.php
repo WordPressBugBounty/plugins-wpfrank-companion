@@ -80,7 +80,7 @@ class Homerix_Newsletter {
 	public static function enqueue_scripts() {
 		wp_enqueue_script(
 			'homerix-newsletter',
-			get_template_directory_uri() . '/assets/js/frontend/newsletter.js',
+			WPFRANK_HOMERIX_URL . 'assets/js/newsletter.js',
 			array( 'jquery' ),
 			defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : wp_get_theme()->get( 'Version' ),
 			true

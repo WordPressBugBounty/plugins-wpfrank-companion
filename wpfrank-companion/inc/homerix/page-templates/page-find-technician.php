@@ -42,7 +42,7 @@ $search_title       = get_theme_mod( 'find_tech_search_title', __( 'Find Your Pe
 $search_placeholder = get_theme_mod( 'find_tech_search_placeholder', __( "e.g. 'John' or 'plumbing'", 'homerix' ) );
 
 // Services for filter (with limit).
-$all_services         = get_theme_mod(
+$all_services = get_theme_mod(
 	'find_tech_services',
 	array(
 		array(
@@ -69,12 +69,12 @@ if ( is_string( $all_services ) ) {
 } elseif ( ! is_array( $all_services ) ) {
 	$all_services = array();
 }
-$total_services       = count( $all_services );
-$services             = array_slice( $all_services, 0, $free_services_limit );
-$has_more_services    = $total_services > $free_services_limit;
+$total_services    = count( $all_services );
+$services          = array_slice( $all_services, 0, $free_services_limit );
+$has_more_services = $total_services > $free_services_limit;
 
 // Locations for filter (with limit).
-$all_locations         = get_theme_mod(
+$all_locations = get_theme_mod(
 	'find_tech_locations',
 	array(
 		array(
@@ -101,12 +101,12 @@ if ( is_string( $all_locations ) ) {
 } elseif ( ! is_array( $all_locations ) ) {
 	$all_locations = array();
 }
-$total_locations       = count( $all_locations );
-$locations             = array_slice( $all_locations, 0, $free_locations_limit );
-$has_more_locations    = $total_locations > $free_locations_limit;
+$total_locations    = count( $all_locations );
+$locations          = array_slice( $all_locations, 0, $free_locations_limit );
+$has_more_locations = $total_locations > $free_locations_limit;
 
 // Technicians list (with limit).
-$all_technicians         = get_theme_mod( 'find_tech_technicians_list', array() );
+$all_technicians = get_theme_mod( 'find_tech_technicians_list', array() );
 if ( is_string( $all_technicians ) ) {
 	$decoded_technicians = json_decode( $all_technicians, true );
 	$all_technicians     = is_array( $decoded_technicians ) ? $decoded_technicians : array();
@@ -367,7 +367,7 @@ $pro_url = homerix_get_pro_url( 'find-technician-page', 'upgrade-card' );
 
 <?php
 // Enqueue find technician script.
-wp_enqueue_script( 'homerix-find-technician', get_template_directory_uri() . '/assets/js/frontend/find-technician.js', array(), defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0', true );
+wp_enqueue_script( 'homerix-find-technician', WPFRANK_HOMERIX_URL . 'assets/js/find-technician.js', array(), defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0', true );
 
 // Localize script with AJAX URL and security nonce.
 wp_localize_script(

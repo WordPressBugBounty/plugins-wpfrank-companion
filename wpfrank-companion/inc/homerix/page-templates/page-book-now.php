@@ -427,7 +427,7 @@ $pro_url = homerix_get_pro_url( 'book-now-page', 'upgrade-card' );
 
 <?php
 // Enqueue booking form script.
-wp_enqueue_script( 'homerix-booking-form', get_template_directory_uri() . '/assets/js/frontend/booking-form.js', array(), defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0', true );
+wp_enqueue_script( 'homerix-booking-form', WPFRANK_HOMERIX_URL . 'assets/js/booking-form.js', array(), defined( 'HOMERIX_VERSION' ) ? HOMERIX_VERSION : '1.0.0', true );
 
 // Localize script with AJAX URL (reCAPTCHA disabled in free version).
 wp_localize_script(

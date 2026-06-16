@@ -1,5 +1,11 @@
 # WPFrank Companion - Changelog
 
+## [0.3.9] - 2026-06-16 — JavaScript Asset Relocation - Wordpress Notified Requirements
+
+### Changed
+- Relocated Homerix theme frontend JavaScript files (`booking-form.js`, `contact-form.js`, `find-technician.js`, `newsletter.js`, `services.js`) to the companion plugin's `inc/homerix/assets/js/` folder to adhere to the WordPress.org Theme Review guidelines.
+- Modified script enqueue URLs in page templates (`page-book-now.php`, `page-contact-us.php`, `page-find-technician.php`) and component integrations (`newsletter.php`) to use `WPFRANK_HOMERIX_URL`.
+
 ## [0.3.8] - 2026-06-13 — Security Fixes & PHP 8 Compatibility
 ## [0.3.7] - 2026-06-13 — Homerix Find Technician Fixes.
 
