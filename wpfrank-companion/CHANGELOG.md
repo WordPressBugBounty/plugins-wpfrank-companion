@@ -1,5 +1,14 @@
 # WPFrank Companion - Changelog
 
+## [0.3.10] - 2026-06-18 — More - Wordpress Notified Requirements Homerix
+### Changed
+
+- Removed possibility of technicians data reset on switch theme
+- Updated default Terms of Service section settings and templates to explicitly declare 100% GPL compatibility
+- Removed reset possibility of menu locations on switch theme
+
+
+
 ## [0.3.9] - 2026-06-16 — JavaScript Asset Relocation - Wordpress Notified Requirements
 
 ### Changed

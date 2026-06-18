@@ -2,7 +2,7 @@
 Contributors: FARAZFRANK
 Tags: widgets, homepage, template, theme builder, page builder
 Tested up to: 7.0
-Stable tag: 0.3.9
+Stable tag: 0.3.10
 Requires PHP: 4.0
 Requires at least: 4.0
 License: GPLv3 or later
@@ -63,6 +63,9 @@ Source: https://pxhere.com/
 Have any queries?
 
 == Changelog ==
+= 0.3.10 =
+* Updated default Terms of Service section settings and templates to explicitly declare 100% GPL compatibility.
+
 = 0.3.9 =
 * Relocated Homerix frontend JavaScript assets from the theme folder to the companion plugin (`inc/homerix/assets/js/`) for repository compliance.
 * Updated script enqueues and paths inside page templates and components.

@@ -250,14 +250,3 @@ function homerix_migrate_technician_defaults() {
 	update_option( 'homerix_tech_data_v2', true );
 }
 add_action( 'init', 'homerix_migrate_technician_defaults' );
-
-/**
- * Reset technician data on theme activation.
- *
- * @since 1.0.0
- */
-function homerix_reset_technician_data() {
-	delete_option( 'theme_mods_Homerix' );
-	delete_option( 'homerix_tech_data_v2' );
-}
-add_action( 'after_switch_theme', 'homerix_reset_technician_data' );

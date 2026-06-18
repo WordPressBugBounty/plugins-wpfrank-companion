@@ -56,6 +56,10 @@ $sections = get_theme_mod(
 			'content' => __( 'The service and its original content, features, and functionality are owned by Homerix Pro and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.', 'homerix' ),
 		),
 		array(
+			'title'   => __( 'Product Licensing', 'homerix' ),
+			'content' => __( "All WordPress themes, plugins, and related add-ons distributed by us (including the Homerix theme, Homerix Pro, and WPFrank Companion), whether free or paid, are 100% GPL-compatible and licensed under the GNU General Public License (GPL) version 2.0 or later (https://www.gnu.org/licenses/gpl-2.0.html). You are granted full rights to use, modify, and redistribute the software in accordance with the terms of this license.", 'homerix' ),
+		),
+		array(
 			'title'   => __( 'Privacy Policy', 'homerix' ),
 			'content' => __( 'Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the service, to understand our practices.', 'homerix' ),
 		),
